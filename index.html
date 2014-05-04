@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/bootstrap.js"></script>
+<script data-pace-options='{ "elements": {"selectors": ["iframe"]} }' src="js/pace.min.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -22,6 +23,7 @@
 </head>
 <body>
 <iframe src="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform?embedded=true" width="960" height="500" frameborder="0" marginheight="0" marginwidth="0" id="rec-iframe">載入中…</iframe>
+<iframe src="https://googledrive.com/host/0B2de7E0Siy29dktFdmt4WVhpNjA/xsMapping.html?f=_2282323478199683621525226222382591025343321023846320844384632333245260323240222383520620839234814132.Data.json" width="960" height="500" frameborder="0" marginheight="0" marginwidth="0" id="map-iframe">載入中…</iframe>
 <script>
   
   $(function(){
@@ -31,8 +33,14 @@
     });
   })
   function refresh_window(){
-      $('#rec-iframe').width($(window).width());
-      $('#rec-iframe').height($(window).height());
+    if($(window).width()<800){
+      $('iframe').width($(window).width());
+    }else{
+      $('iframe').width($(window).width()/2);
+    }
+
+      $('body').height("100%");
+      // $('#rec-iframe').height($(window).height());
   }
 </script>
 </body>

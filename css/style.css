@@ -1,6 +1,18 @@
 body {
   text-align: center;
 }
+
+@media screen and (min-width: 800px) {
 iframe{
   margin:0 auto;
+  height:99%;
+  float:left;
+}
+}
+
+@media screen and (max-width: 800px) {
+iframe{
+  margin:0 auto;
+  height:49%;
+}
 }
