@@ -17,9 +17,9 @@ iframe{
 }
 }
 
-@media only screen and (max-device-width: 800px) {
+/*@media only screen and (max-device-width: 800px) {
 iframe{
   margin:0 auto;
   height:49%;
 }
-}
+}*/
