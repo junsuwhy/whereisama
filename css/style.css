@@ -2,7 +2,7 @@ body {
   text-align: center;
 }
 
-@media screen and (min-width: 800px) {
+@media only screen and (min-width: 800px) {
 iframe{
   margin:0 auto;
   height:99%;
@@ -10,7 +10,14 @@ iframe{
 }
 }
 
-@media screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
+iframe{
+  margin:0 auto;
+  height:49%;
+}
+}
+
+@media only screen and (max-device-width: 800px) {
 iframe{
   margin:0 auto;
   height:49%;
