@@ -22,7 +22,6 @@
       
 </head>
 <body>
-  <h1>測試</h1>
 
   <iframe src="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform?embedded=true" width="200" height="500" frameborder="0" marginheight="0" marginwidth="0" id="rec-iframe">載入中…</iframe>
   <iframe src="https://googledrive.com/host/0B2de7E0Siy29dktFdmt4WVhpNjA/xsMapping.html?f=_2282323478199683621525226222382591025343321023846320844384632333245260323240222383520620839234814132.Data.json" width="200" height="500" frameborder="0" marginheight="0" marginwidth="0" id="map-iframe">載入中…</iframe>
@@ -35,7 +34,7 @@
     });
   })
   function refresh_window(){
-    $('h1').text($(window).width());
+    // $('h1').text($(window).width());
     if($(window).width()<800){
       $('iframe').width($(window).width());
     }else{
