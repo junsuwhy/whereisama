@@ -21,7 +21,19 @@
       
 </head>
 <body>
-<iframe src="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform?embedded=true" width="960" height="500" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
-
+<iframe src="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform?embedded=true" width="960" height="500" frameborder="0" marginheight="0" marginwidth="0" id="rec-iframe">載入中…</iframe>
+<script>
+  
+  $(function(){
+    refresh_window();
+    $(window).resize(function(event) {
+      refresh_window();
+    });
+  })
+  function refresh_window(){
+      $('#rec-iframe').width($(window).width());
+      $('#rec-iframe').height($(window).height());
+  }
+</script>
 </body>
 </html>
