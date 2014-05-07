@@ -1,5 +1,6 @@
 body {
   background-color: #fff;
+  background-image: url(../amabg.png);
   color: #000;
   font-family: Georgia,Times,serif;
   text-align: left;
@@ -15,14 +16,14 @@ a:hover {
   display:none;
 }
 .all-container{
-  width:800px;
+  width:960px;
   margin:0 auto;
 }
 .ss-form-container {
   background-color: #ffffff;
   border: 0;
   float: left;
-  width:510px;
+  width:670px;
   padding:0 45px;
   /*margin: 0 auto;*/
 }
@@ -33,7 +34,7 @@ a:hover {
   float:left;
 }
 .ss-form-desc {
-  margin-top: 100px;
+  margin-top: 80px;
   font-size: 12pt;
   width:320px;
   border-top: 5px #000 solid;
@@ -67,7 +68,7 @@ a:hover {
 }
 */
 .ss-form-entry{
-  width: 220px;
+  width: 300px;
   float: left;
   padding-right: 20px;
   padding-top:10px;
@@ -133,5 +134,12 @@ div.ss-submit div.ss-form-entry {
 }
 #ss-submit:hover{
   
+}
+
+iframe.map{
+  width:960px;
+  height:400px;
+  margin:0 auto;
+  border: none;
 }
 
