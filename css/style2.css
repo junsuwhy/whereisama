@@ -15,7 +15,7 @@ a:hover {
   display:none;
 }
 .background-div{
-  background: url(../img/amabg.png) no-repeat 100% 0;
+  background: url(../img/amabg.png) no-repeat 100% 45px;
   width: 960px;
   height: 368px;
   position: fixed;
@@ -78,6 +78,7 @@ a:hover {
 .ss-form-entry select, 
 #ss-submit:hover {
   border: 1px solid #000;
+  background: rgba(1,1,1,0);
 }
 .ss-form-entry input {
   padding: 2px 4px;
