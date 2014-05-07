@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>把回收拿給阿公阿嬤</title>
-
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-<script src="js/jquery-1.10.2.js"></script>
-<script src="js/bootstrap.js"></script>
-<script data-pace-options='{ "elements": {"selectors": ["iframe"]} }' src="js/pace.min.js"></script>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head>
+  <link rel="shortcut icon" href="https://ssl.gstatic.com/docs/spreadsheets/forms/favicon_jfk2.png" type="image/x-icon">
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=10; chrome=1;">
+  <meta name="fragment" content="!">
+  <base target="_blank">
+  <title>&#22823;&#23478;&#19968;&#36215;&#25226;&#22238;&#25910;&#25343;&#32102;&#38463;&#20844;&#38463;&#23332;&#12304;&#20849;8&#38988;&#12305;</title>
+  <link rel="stylesheet" type="text/css" href="">
+  <!-- <link href='https://docs.google.com/static/forms/client/css/2907215400-formview_ltr.css' type='text/css' rel='stylesheet'> -->
+  <link href='css/style2.css' type='text/css' rel='stylesheet'>
+    <link href='https://docs.google.com/static/forms/client/css/212514800-mobile_formview_ltr.css' type='text/css' rel='stylesheet' media='screen and (max-device-width: 721px)'>
+      <script type="text/javascript">
+      /**
+      * @license
+      *! H5F
+      * https://github.com/ryanseddon/H5F/
+      * Copyright (c) Ryan Seddon | Licensed MIT
+      */
+      (function(e,t){"function"==typeof define&&define.amd?define(t):e.H5F=t()})(this,function(){var e,t,a,i,n,r,s,l,u,o,c,d,v,f,p,m,h,g,b,y,w,C,N,A,E,$,k=document,x=k.createElement("input"),q=/^[a-zA-Z0-9.!#$%&'*+-\/=?\^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,M=/[a-z][\-\.+a-z]*:\/\//i,L=/^(input|select|textarea)$/i;return r=function(e,t){var a=!e.nodeType||!1,i={validClass:"valid",invalidClass:"error",requiredClass:"required",placeholderClass:"placeholder"};if("object"==typeof t)for(var r in i)t[r]===void 0&&(t[r]=i[r]);if(n=t||i,a)for(var l=0,u=e.length;u>l;l++)s(e[l]);else s(e)},s=function(a){var i,n=a.elements,r=n.length,s=!!a.attributes.novalidate;if(b(a,"invalid",u,!0),b(a,"blur",u,!0),b(a,"input",u,!0),b(a,"keyup",u,!0),b(a,"focus",u,!0),b(a,"change",u,!0),b(a,"click",o,!0),b(a,"submit",function(i){e=!0,t||s||a.checkValidity()||w(i)},!1),!v())for(a.checkValidity=function(){return c(a)};r--;)i=!!n[r].attributes.required,"fieldset"!==n[r].nodeName.toLowerCase()&&l(n[r])},l=function(e){var t=e,a=g(t),n={type:t.getAttribute("type"),pattern:t.getAttribute("pattern"),placeholder:t.getAttribute("placeholder")},r=/^(email|url)$/i,s=/^(input|keyup)$/i,l=r.test(n.type)?n.type:n.pattern?n.pattern:!1,u=f(t,l),o=m(t,"step"),v=m(t,"min"),h=m(t,"max"),b=!(""===t.validationMessage||void 0===t.validationMessage);t.checkValidity=function(){return c.call(this,t)},t.setCustomValidity=function(e){d.call(t,e)},t.validity={valueMissing:a,patternMismatch:u,rangeUnderflow:v,rangeOverflow:h,stepMismatch:o,customError:b,valid:!(a||u||o||v||h||b)},n.placeholder&&!s.test(i)&&p(t)},u=function(e){var t=C(e)||e,a=/^(input|keyup|focusin|focus|change)$/i,r=/^(submit|image|button|reset)$/i,s=/^(checkbox|radio)$/i,o=!0;!L.test(t.nodeName)||r.test(t.type)||r.test(t.nodeName)||(i=e.type,v()||l(t),t.validity.valid&&(""!==t.value||s.test(t.type))||t.value!==t.getAttribute("placeholder")&&t.validity.valid?(A(t,[n.invalidClass,n.requiredClass]),N(t,n.validClass)):a.test(i)?t.validity.valueMissing&&A(t,[n.requiredClass,n.invalidClass,n.validClass]):t.validity.valueMissing?(A(t,[n.invalidClass,n.validClass]),N(t,n.requiredClass)):t.validity.valid||(A(t,[n.validClass,n.requiredClass]),N(t,n.invalidClass)),"input"===i&&o&&(y(t.form,"keyup",u,!0),o=!1))},c=function(t){var a,i,n,r,s=!1;if("form"===t.nodeName.toLowerCase()){a=t.elements;for(var l=0,o=a.length;o>l;l++)i=a[l],n=!!i.attributes.required,r=!!i.attributes.pattern,"fieldset"!==i.nodeName.toLowerCase()&&(n||r&&n)&&(u(i),i.validity.valid||s||(e&&i.focus(),s=!0));return!s}return u(t),t.validity.valid},d=function(e){var t=this;t.validationMessage=e},o=function(e){var a=C(e);a.attributes.formnovalidate&&"submit"===a.type&&(t=!0)},v=function(){return E(x,"validity")&&E(x,"checkValidity")},f=function(e,t){if("email"===t)return!q.test(e.value);if("url"===t)return!M.test(e.value);if(t){var i=e.getAttribute("placeholder"),n=e.value;return a=RegExp("^(?:"+t+")$"),n===i?!1:""===n?!1:!a.test(e.value)}return!1},p=function(e){var t={placeholder:e.getAttribute("placeholder")},a=/^(focus|focusin|submit)$/i,r=/^(input|textarea)$/i,s=/^password$/i,l=!!("placeholder"in x);l||!r.test(e.nodeName)||s.test(e.type)||(""!==e.value||a.test(i)?e.value===t.placeholder&&a.test(i)&&(e.value="",A(e,n.placeholderClass)):(e.value=t.placeholder,b(e.form,"submit",function(){i="submit",p(e)},!0),N(e,n.placeholderClass)))},m=function(e,t){var a=parseInt(e.getAttribute("min"),10)||0,i=parseInt(e.getAttribute("max"),10)||!1,n=parseInt(e.getAttribute("step"),10)||1,r=parseInt(e.value,10),s=(r-a)%n;return g(e)||isNaN(r)?"number"===e.getAttribute("type")?!0:!1:"step"===t?e.getAttribute("step")?0!==s:!1:"min"===t?e.getAttribute("min")?a>r:!1:"max"===t?e.getAttribute("max")?r>i:!1:void 0},h=function(e){var t=!!e.attributes.required;return t?g(e):!1},g=function(e){var t=e.getAttribute("placeholder"),a=/^(checkbox|radio)$/i,i=!!e.attributes.required;return!(!i||""!==e.value&&e.value!==t&&(!a.test(e.type)||$(e)))},b=function(e,t,a,i){E(window,"addEventListener")?e.addEventListener(t,a,i):E(window,"attachEvent")&&window.event!==void 0&&("blur"===t?t="focusout":"focus"===t&&(t="focusin"),e.attachEvent("on"+t,a))},y=function(e,t,a,i){E(window,"removeEventListener")?e.removeEventListener(t,a,i):E(window,"detachEvent")&&window.event!==void 0&&e.detachEvent("on"+t,a)},w=function(e){e=e||window.event,e.stopPropagation&&e.preventDefault?(e.stopPropagation(),e.preventDefault()):(e.cancelBubble=!0,e.returnValue=!1)},C=function(e){return e=e||window.event,e.target||e.srcElement},N=function(e,t){var a;e.className?(a=RegExp("(^|\\s)"+t+"(\\s|$)"),a.test(e.className)||(e.className+=" "+t)):e.className=t},A=function(e,t){var a,i,n="object"==typeof t?t.length:1,r=n;if(e.className)if(e.className===t)e.className="";else for(;n--;)a=RegExp("(^|\\s)"+(r>1?t[n]:t)+"(\\s|$)"),i=e.className.match(a),i&&3===i.length&&(e.className=e.className.replace(a,i[1]&&i[2]?" ":""))},E=function(e,t){var a=typeof e[t],i=RegExp("^function|object$","i");return!!(i.test(a)&&e[t]||"unknown"===a)},$=function(e){for(var t=document.getElementsByName(e.name),a=0;t.length>a;a++)if(t[a].checked)return!0;return!1},{setup:r}});
+      </script>
+      <script src="js/pace.min.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -19,31 +29,131 @@
   ga('send', 'pageview');
 
 </script>
-      
-</head>
-<body>
-
-  <iframe src="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform?embedded=true" width="200" height="500" frameborder="0" marginheight="0" marginwidth="0" id="rec-iframe">載入中…</iframe>
-  <iframe src="https://googledrive.com/host/0B2de7E0Siy29dktFdmt4WVhpNjA/xsMapping.html?f=_2282323478199683621525226222382591025343321023846320844384632333245260323240222383520620839234814132.Data.json" width="200" height="500" frameborder="0" marginheight="0" marginwidth="0" id="map-iframe">載入中…</iframe>
-<script>
-  
-  $(function(){
-    refresh_window();
-    $(window).resize(function(event) {
-      refresh_window();
-    });
-  })
-  function refresh_window(){
-    // $('h1').text($(window).width());
-    if($(window).width()<800){
-      $('iframe').width($(window).width());
-    }else{
-      $('iframe').width($(window).width()/2);
-    }
-
-      $('body').height("100%");
-      // $('#rec-iframe').height($(window).height());
-  }
-</script>
-</body>
-</html>
+      <link rel="alternate" type="text/xml+oembed" href="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/oembed?url=https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform&amp;format=xml">
+      <meta name="viewport" content="width=device-width">
+      <meta property="og:title" content="大家一起把回收拿給阿公阿嬤【共8題】"><meta property="og:type" content="article"><meta property="og:site_name" content="Google Docs"><meta property="og:url" content="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform"><meta property="og:image" content="https://ssl.gstatic.com/docs/forms/social/social-forms.png"><meta property="og:image:width" content="90"><meta property="og:image:height" content="90"><meta property="og:description" content="你家附近有回收的阿公阿嬤嗎?
+      請幫我們把他們的地址填入問卷
+      我們將用這個資料，建立一個回收點地圖
+      讓大家都可以把家裡的回收附近有在收回收的阿公阿嬤
+      PS:我們會的工具不多，如果有攻城師想到更好的方式，也請不吝指教
+      PS:如果可以的話，盡可能取得阿公阿嬤公開資料的同意，避免造成他們的困擾">
+    </head>
+    <body dir="ltr" class="ss-base-body"><div itemscope itemtype="http://schema.org/CreativeWork/FormObject"><meta itemprop="name" content="&#22823;&#23478;&#19968;&#36215;&#25226;&#22238;&#25910;&#25343;&#32102;&#38463;&#20844;&#38463;&#23332;&#12304;&#20849;8&#38988;&#12305;">
+      <meta itemprop="description" content="&#20320;&#23478;&#38468;&#36817;&#26377;&#22238;&#25910;&#30340;&#38463;&#20844;&#38463;&#23332;&#21966;?
+      &#35531;&#24171;&#25105;&#20497;&#25226;&#20182;&#20497;&#30340;&#22320;&#22336;&#22635;&#20837;&#21839;&#21367;
+      &#25105;&#20497;&#23559;&#29992;&#36889;&#20491;&#36039;&#26009;&#65292;&#24314;&#31435;&#19968;&#20491;&#22238;&#25910;&#40670;&#22320;&#22294;
+      &#35731;&#22823;&#23478;&#37117;&#21487;&#20197;&#25226;&#23478;&#35041;&#30340;&#22238;&#25910;&#38468;&#36817;&#26377;&#22312;&#25910;&#22238;&#25910;&#30340;&#38463;&#20844;&#38463;&#23332;
+      PS:&#25105;&#20497;&#26371;&#30340;&#24037;&#20855;&#19981;&#22810;&#65292;&#22914;&#26524;&#26377;&#25915;&#22478;&#24107;&#24819;&#21040;&#26356;&#22909;&#30340;&#26041;&#24335;&#65292;&#20063;&#35531;&#19981;&#21533;&#25351;&#25945;
+      PS:&#22914;&#26524;&#21487;&#20197;&#30340;&#35441;&#65292;&#30433;&#21487;&#33021;&#21462;&#24471;&#38463;&#20844;&#38463;&#23332;&#20844;&#38283;&#36039;&#26009;&#30340;&#21516;&#24847;&#65292;&#36991;&#20813;&#36896;&#25104;&#20182;&#20497;&#30340;&#22256;&#25854;">
+      <meta itemprop="url" content="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform">
+      <meta itemprop="embedUrl" content="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform?embedded=true">
+      <meta itemprop="faviconUrl" content="https://ssl.gstatic.com/docs/spreadsheets/forms/favicon_jfk2.png">
+      <div class="all-container">
+        <div class="ss-header-image"></div>
+        <div class="ss-form-container">
+        <div class="ss-top-of-page"><div class="ss-form-heading"><h1 class="ss-form-title" dir="ltr">&#22823;&#23478;&#19968;&#36215;&#25226;&#22238;&#25910;&#25343;&#32102;&#38463;&#20844;&#38463;&#23332;&#12304;&#20849;8&#38988;&#12305;</h1>
+          <div class="ss-form-desc ss-no-ignore-whitespace">你家附近有收回收的阿公阿嬤嗎?<br>請幫我們把他們的地址填入問卷<br>我們將用這個資料，建立一個回收點地圖<br>請大家把家裡的回收拿給附近的阿公阿嬤<p class='hide'><br>PS:我們會的工具不多，如果有攻城師想到更好的方式，也請不吝指教<br>PS:如果可以的話，盡可能取得阿公阿嬤公開資料的同意，避免造成他們的困擾</p></div>
+          <hr class="ss-email-break" style="display:none;">
+        </div></div>
+        <div class="ss-form"><iframe name="iframe_spgwpnep" id="iframe_spgwpnep" style="display:none;" onload="if(typeof sent_spgwpnep!='undefined'){window.location='/thankyou.html';}"></iframe><form action="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/formResponse" method="POST" id="ss-form" target="iframe_spgwpnep" onsubmit="sent_spgwpnep=true"><ol role="list" class="ss-question-list" style="padding-left: 0">
+          <div class="ss-form-question errorbox-good" role="listitem">
+            <div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry">
+              <label class="ss-q-item-label" for="entry_1281161739"><div class="ss-q-title">稱呼
+              </div>
+              <div class="ss-q-help ss-secondary-text" dir="ltr">阿公阿嬤怎麼稱呼? ex: 李爺爺</div></label>
+              <input type="text" name="entry.1281161739" value="" class="ss-q-short" id="entry_1281161739" dir="auto" aria-label="稱呼 阿公阿嬤怎麼稱呼? ex: 李爺爺 " title="">
+              <div class="error-message"></div>
+              <div class="required-message">This is a required question</div>
+            </div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+            <div dir="ltr" class="ss-item  ss-radio"><div class="ss-form-entry">
+              <label class="ss-q-item-label" for="entry_1674615426"><div class="ss-q-title">性別
+              </div>
+              <div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+              <ul class="ss-choices" role="radiogroup" aria-label="性別  "><li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.759242214" value="&#30007;" id="group_759242214_1" role="radio" class="ss-q-radio" aria-label="&#30007;"></span>
+              <span class="ss-choice-label">男</span>
+              </label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.759242214" value="&#22899;" id="group_759242214_2" role="radio" class="ss-q-radio" aria-label="&#22899;"></span>
+              <span class="ss-choice-label">女</span>
+            </label></li></ul>
+            <div class="error-message"></div>
+            <div class="required-message">This is a required question</div></div></div></div> <div class="ss-form-question errorbox-good clear-both" role="listitem">
+            <div dir="ltr" class="ss-item  ss-paragraph-text"><div class="ss-form-entry">
+              <label class="ss-q-item-label" for="entry_1619101833"><div class="ss-q-title">回收區域
+              </div>
+              <div class="ss-q-help ss-secondary-text" dir="ltr">若不知道確切地址可寫大約的範圍，例如 :民生社區</div></label>
+              <textarea name="entry.1619101833" rows="8" cols="0" class="ss-q-long" id="entry_1619101833" dir="auto" aria-label="【地址】 不知道確切地址的話，請填一個大致的位罝，請詳填【附近地標】 "></textarea>
+              <div class="error-message"></div>
+              <div class="required-message">This is a required question</div>
+            </div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+            <div dir="ltr" class="ss-item  ss-paragraph-text"><div class="ss-form-entry">
+              <label class="ss-q-item-label" for="entry_580016502"><div class="ss-q-title">附近地標
+              </div>
+              <div class="ss-q-help ss-secondary-text" dir="ltr">填入備註或附近地標以供辨識 例如: 辛亥捷運站前的7-11</div></label>
+              <textarea name="entry.580016502" rows="8" cols="0" class="ss-q-long" id="entry_580016502" dir="auto" aria-label="【附近地標】 無法提供確切地址的話，可填入備註與附近地標以供辨識 "></textarea>
+              <div class="error-message"></div>
+              <div class="required-message">This is a required question</div>
+            </div></div></div> <div class="ss-form-question errorbox-good hide" role="listitem">
+            <div dir="ltr" class="ss-item  ss-checkbox"><div class="ss-form-entry">
+              <label class="ss-q-item-label" for="entry_784579707"><div class="ss-q-title">回收項目
+              </div>
+              <div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+              <ul class="ss-choices" role="group" aria-label="回收項目  "><li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.2102745186" value="&#22609;&#33184;" id="group_2102745186_1" role="checkbox" class="ss-q-checkbox"></span>
+              <span class="ss-choice-label">塑膠</span>
+              </label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.2102745186" value="&#37941;&#37569;&#32592;" id="group_2102745186_2" role="checkbox" class="ss-q-checkbox"></span>
+              <span class="ss-choice-label">鐵鋁罐</span>
+              </label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.2102745186" value="&#20445;&#29305;&#29942;" id="group_2102745186_3" role="checkbox" class="ss-q-checkbox"></span>
+              <span class="ss-choice-label">保特瓶</span>
+              </label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.2102745186" value="&#32025;&#39006;" id="group_2102745186_4" role="checkbox" class="ss-q-checkbox"></span>
+              <span class="ss-choice-label">紙類</span>
+              </label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.2102745186" value="&#24290;&#38651;&#27744;" id="group_2102745186_5" role="checkbox" class="ss-q-checkbox"></span>
+              <span class="ss-choice-label">廢電池</span>
+              </label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.2102745186" value="&#29627;&#29827;" id="group_2102745186_6" role="checkbox" class="ss-q-checkbox"></span>
+              <span class="ss-choice-label">玻璃</span>
+            </label></li></ul>
+            <div class="error-message"></div>
+            <div class="required-message">This is a required question</div></div></div></div> <div class="ss-form-question errorbox-good clear-both" role="listitem">
+            <div dir="ltr" class="ss-item  ss-time"><div class="ss-form-entry">
+              <label class="ss-q-item-label" for="entry_360913685"><div class="ss-q-title">回收時間(開始)
+              </div>
+              <div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+              <div class="ss-q-time"><div class="ss-datetime-box goog-inline-block" dir="ltr"><select name="entry.360913685_hour" id="entry.360913685_hour" aria-label="Hour"><option value="">時</option>
+              <option value="01">01</option> <option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option> <option value="06">06</option> <option value="07">07</option> <option value="08">08</option> <option value="09">09</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option></select>
+              :
+              <select name="entry.360913685_minute" id="entry.360913685_minute" aria-label="Minute"><option value="">分</option>
+              <option value="00">00</option> <option value="01">01</option> <option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option> <option value="06">06</option> <option value="07">07</option> <option value="08">08</option> <option value="09">09</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option> <option value="24">24</option> <option value="25">25</option> <option value="26">26</option> <option value="27">27</option> <option value="28">28</option> <option value="29">29</option> <option value="30">30</option> <option value="31">31</option> <option value="32">32</option> <option value="33">33</option> <option value="34">34</option> <option value="35">35</option> <option value="36">36</option> <option value="37">37</option> <option value="38">38</option> <option value="39">39</option> <option value="40">40</option> <option value="41">41</option> <option value="42">42</option> <option value="43">43</option> <option value="44">44</option> <option value="45">45</option> <option value="46">46</option> <option value="47">47</option> <option value="48">48</option> <option value="49">49</option> <option value="50">50</option> <option value="51">51</option> <option value="52">52</option> <option value="53">53</option> <option value="54">54</option> <option value="55">55</option> <option value="56">56</option> <option value="57">57</option> <option value="58">58</option> <option value="59">59</option></select>
+              <select name="entry.360913685_ampm" aria-label="AM or PM"><option value="AM">上午</option>
+              <option value="PM">下午</option></select>
+              <div class="ss-datetime-box-spacer goog-inline-block"></div></div></div></div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+              <div dir="ltr" class="ss-item  ss-time"><div class="ss-form-entry">
+                <label class="ss-q-item-label" for="entry_1027347965"><div class="ss-q-title">回收時間(結束)
+                </div>
+                <div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+                <div class="ss-q-time"><div class="ss-datetime-box goog-inline-block" dir="ltr"><select name="entry.1027347965_hour" id="entry.1027347965_hour" aria-label="Hour"><option value="">時</option>
+                <option value="01">01</option> <option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option> <option value="06">06</option> <option value="07">07</option> <option value="08">08</option> <option value="09">09</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option></select>
+                :
+                <select name="entry.1027347965_minute" id="entry.1027347965_minute" aria-label="Minute"><option value="">分</option>
+                <option value="00">00</option> <option value="01">01</option> <option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option> <option value="06">06</option> <option value="07">07</option> <option value="08">08</option> <option value="09">09</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option> <option value="24">24</option> <option value="25">25</option> <option value="26">26</option> <option value="27">27</option> <option value="28">28</option> <option value="29">29</option> <option value="30">30</option> <option value="31">31</option> <option value="32">32</option> <option value="33">33</option> <option value="34">34</option> <option value="35">35</option> <option value="36">36</option> <option value="37">37</option> <option value="38">38</option> <option value="39">39</option> <option value="40">40</option> <option value="41">41</option> <option value="42">42</option> <option value="43">43</option> <option value="44">44</option> <option value="45">45</option> <option value="46">46</option> <option value="47">47</option> <option value="48">48</option> <option value="49">49</option> <option value="50">50</option> <option value="51">51</option> <option value="52">52</option> <option value="53">53</option> <option value="54">54</option> <option value="55">55</option> <option value="56">56</option> <option value="57">57</option> <option value="58">58</option> <option value="59">59</option></select>
+                <select name="entry.1027347965_ampm" aria-label="AM or PM"><option value="AM">上午</option>
+                <option value="PM">下午</option></select>
+                <div class="ss-datetime-box-spacer goog-inline-block"></div></div></div></div></div></div> <div class="ss-form-question errorbox-good clear-both width-all" role="listitem">
+                <div dir="ltr" class="ss-item  ss-paragraph-text"><div class="ss-form-entry">
+                  <label class="ss-q-item-label" for="entry_1456811837"><div class="ss-q-title">意見回饋
+                  </div>
+                  <div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+                  <textarea name="entry.1456811837" rows="8" cols="0" class="ss-q-long" id="entry_1456811837" dir="auto" aria-label="意見回饋  "></textarea>
+                  <div class="error-message"></div>
+                  <div class="required-message">This is a required question</div>
+                </div></div></div>
+                <input type="hidden" name="draftResponse" value="[,,&quot;-6858411262015405139&quot;]
+                ">
+                <input type="hidden" name="pageHistory" value="0">
+                <input type="hidden" name="fbzx" value="-6858411262015405139">
+                <div class="ss-item ss-navigate"><table id="navigation-table"><tbody><tr><td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
+                  <input type="submit" name="submit" value="送出" id="ss-submit">
+                  </td>
+                </tr></tbody></table></div></ol></form></div>
+                </div>
+      </div>
+              <script type='text/javascript' src='https://docs.google.com/static/forms/client/js/3625253292-formviewer_prd.js'></script>
+              <script type="text/javascript">H5F.setup(document.getElementById('ss-form'));_initFormViewer(
+              "[100,\x22#222222\x22,[]\n]\n");
+            </script></div></body></html>

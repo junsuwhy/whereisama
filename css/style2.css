@@ -1,0 +1,137 @@
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: Georgia,Times,serif;
+  text-align: left;
+  padding: 0;
+}
+a {
+  color: #e8280e;
+}
+a:hover {
+  text-decoration: none;
+}
+.hide,.required-message{
+  display:none;
+}
+.all-container{
+  width:800px;
+  margin:0 auto;
+}
+.ss-form-container {
+  background-color: #ffffff;
+  border: 0;
+  float: left;
+  width:510px;
+  padding:0 45px;
+  /*margin: 0 auto;*/
+}
+.ss-header-image{
+  background: url(../img/ama-logo-background.jpg) no-repeat;
+  width:200px;
+  height:470px;
+  float:left;
+}
+.ss-form-desc {
+  margin-top: 100px;
+  font-size: 12pt;
+  width:320px;
+  border-top: 5px #000 solid;
+  padding-top:18px;
+}
+.ss-form-title {
+  display:none;
+  /*padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 36pt;
+  font-weight: normal;
+  border-top: 7px solid #333333;
+  border-bottom: 1px solid #333333;*/
+}
+
+.ss-q-title {
+  font-size: 16pt;
+  font-weight: normal;
+  /*font-style: italic;*/
+  margin-bottom: 2px;
+  /*border-top: 3px solid #333333;*/
+  padding-top: 3px;
+  color: #000000;
+}
+.ss-q-help {
+  font-size: 9pt;
+  margin-bottom: 10px;
+}
+/*.ss-form{
+  width:600px;
+}
+*/
+.ss-form-entry{
+  width: 220px;
+  float: left;
+  padding-right: 20px;
+  padding-top:10px;
+}
+.clear-both{
+  clear:both;
+}
+
+.ss-form-entry input, 
+.ss-form-entry textarea, 
+.ss-form-entry select, 
+#ss-submit:hover {
+  border: 2px solid #000;
+}
+.ss-form-entry input {
+  padding: 2px 4px;
+}
+.ss-form-entry textarea {
+  width: 100%;
+  margin-bottom: 0;
+}
+.ss-form-entry li{
+  float:left;
+  list-style: none;
+}
+
+.width-all .ss-form-entry{
+  width:100%;
+}
+
+.ss-required-asterisk {
+  font-size: 8pt;
+  color: #555555;
+}
+.ss-q-title .ss-required-asterisk {
+  font-size: 16pt;
+  padding: 0;
+}
+
+.ss-powered-by {
+  padding-top: 15px;
+  font-size: 8pt;
+  color: #aaaaaa;
+  border-top: 1px solid #cccccc;
+}
+.ss-scalerow {
+  padding: 2px 2px 2px 0;
+  margin: 0;
+}
+div.errorbox-bad .ss-q-title {
+  border: none;
+}
+h2.ss-section-title {
+  background-color: transparent;
+}
+div.ss-submit div.ss-form-entry {
+  background: none;
+  border: none;
+}
+#ss-submit{
+  background: #fff;
+  border:2px #fff solid;
+}
+#ss-submit:hover{
+  
+}
+
