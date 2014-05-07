@@ -42,20 +42,12 @@ a:hover {
 }
 .ss-form-title {
   display:none;
-  /*padding-top: 5px;
-  padding-bottom: 5px;
-  font-size: 36pt;
-  font-weight: normal;
-  border-top: 7px solid #333333;
-  border-bottom: 1px solid #333333;*/
 }
 
 .ss-q-title {
   font-size: 16pt;
   font-weight: normal;
-  /*font-style: italic;*/
   margin-bottom: 2px;
-  /*border-top: 3px solid #333333;*/
   padding-top: 3px;
   color: #000000;
 }
@@ -63,10 +55,6 @@ a:hover {
   font-size: 9pt;
   margin-bottom: 10px;
 }
-/*.ss-form{
-  width:600px;
-}
-*/
 .ss-form-entry{
   width: 300px;
   float: left;
@@ -93,6 +81,9 @@ a:hover {
 .ss-form-entry li{
   float:left;
   list-style: none;
+}
+.ss-choices{
+  margin-left: -40px;
 }
 
 .width-all .ss-form-entry{
@@ -138,7 +129,7 @@ div.ss-submit div.ss-form-entry {
 
 iframe.map{
   width:960px;
-  height:400px;
+  height:600px;
   margin:0 auto;
   border: none;
 }
