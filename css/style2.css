@@ -143,3 +143,13 @@ iframe.map{
   border: none;
 }
 
+#map{
+  clear:both;
+  height:800px;
+}
+.load{
+  position: absolute;
+  z-index: 900;
+  left: 50%;
+  top: 50%;
+}
