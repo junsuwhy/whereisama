@@ -205,7 +205,7 @@
           緯度: "24.156139"
           附近地標: "湖南味小吃"
        */
-      if([agoma_array[i]['緯度']]){
+      if(!isNaN(parseFloat(agoma_array[i]['緯度'])) && !isNaN(parseFloat(agoma_array[i]['經度']))){
         var name = add_tag(agoma_array[i]['稱呼'],"","h3");
         var address = add_tag(agoma_array[i]['地址'],'地址',"div");
         var point = add_tag(agoma_array[i]['附近地標'],'附近地標',"div");
@@ -218,7 +218,7 @@
 
         }
       }
-      $('.load').remove();
+      $('.load').hide();
     };
 
     function add_tag(val,name , tag){
