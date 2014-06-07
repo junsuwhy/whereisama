@@ -6,7 +6,7 @@ body {
   padding: 0;
 }
 a {
-  color: #e8280e;
+  color: #70CCC4;
 }
 a:hover {
   text-decoration: none;
@@ -42,6 +42,14 @@ a:hover {
   float:left;
   position: relative;
 }
+.ss-header-image iframe{
+  border:none; 
+  overflow:hidden; 
+  width:200px; 
+  height:80px;
+  position: absolute;
+  bottom: 0;
+}
 .ss-form-desc {
   margin-top: 80px;
   font-size: 12pt;
@@ -76,8 +84,7 @@ a:hover {
 
 .ss-form-entry input, 
 .ss-form-entry textarea, 
-.ss-form-entry select, 
-#ss-submit:hover {
+.ss-form-entry select{
   border: 1px solid #000;
   background: rgba(1,1,1,0);
 }
@@ -131,7 +138,7 @@ div.ss-submit div.ss-form-entry {
 }
 #ss-submit{
   background: #fff;
-  border:1px #fff solid;
+  /*border:1px #fff solid;*/
 }
 #ss-submit:hover{
   
@@ -146,7 +153,8 @@ iframe.map{
 
 #map{
   clear:both;
-  height:800px;
+  height:500px;
+  margin-bottom: 50px
 }
 .load{
   position: absolute;
