@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=10; chrome=1;">
   <meta name="fragment" content="!">
   <base target="_blank">
-  <title>&#22823;&#23478;&#19968;&#36215;&#25226;&#22238;&#25910;&#25343;&#32102;&#38463;&#20844;&#38463;&#23332;&#12304;&#20849;8&#38988;&#12305;</title>
+  <title>大家一起把回收拿給阿公阿嬤</title>
   <link rel="stylesheet" type="text/css" href="">
   <link href='css/style2.css' type='text/css' rel='stylesheet'>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
@@ -44,13 +44,8 @@
     </head>
     <body dir="ltr" class="ss-base-body">
 
-      <div itemscope itemtype="http://schema.org/CreativeWork/FormObject"><meta itemprop="name" content="&#22823;&#23478;&#19968;&#36215;&#25226;&#22238;&#25910;&#25343;&#32102;&#38463;&#20844;&#38463;&#23332;&#12304;&#20849;8&#38988;&#12305;">
-      <meta itemprop="description" content="&#20320;&#23478;&#38468;&#36817;&#26377;&#22238;&#25910;&#30340;&#38463;&#20844;&#38463;&#23332;&#21966;?
-      &#35531;&#24171;&#25105;&#20497;&#25226;&#20182;&#20497;&#30340;&#22320;&#22336;&#22635;&#20837;&#21839;&#21367;
-      &#25105;&#20497;&#23559;&#29992;&#36889;&#20491;&#36039;&#26009;&#65292;&#24314;&#31435;&#19968;&#20491;&#22238;&#25910;&#40670;&#22320;&#22294;
-      &#35731;&#22823;&#23478;&#37117;&#21487;&#20197;&#25226;&#23478;&#35041;&#30340;&#22238;&#25910;&#38468;&#36817;&#26377;&#22312;&#25910;&#22238;&#25910;&#30340;&#38463;&#20844;&#38463;&#23332;
-      PS:&#25105;&#20497;&#26371;&#30340;&#24037;&#20855;&#19981;&#22810;&#65292;&#22914;&#26524;&#26377;&#25915;&#22478;&#24107;&#24819;&#21040;&#26356;&#22909;&#30340;&#26041;&#24335;&#65292;&#20063;&#35531;&#19981;&#21533;&#25351;&#25945;
-      PS:&#22914;&#26524;&#21487;&#20197;&#30340;&#35441;&#65292;&#30433;&#21487;&#33021;&#21462;&#24471;&#38463;&#20844;&#38463;&#23332;&#20844;&#38283;&#36039;&#26009;&#30340;&#21516;&#24847;&#65292;&#36991;&#20813;&#36896;&#25104;&#20182;&#20497;&#30340;&#22256;&#25854;">
+      <div itemscope itemtype="http://schema.org/CreativeWork/FormObject"><meta itemprop="name" content="大家一起把回收拿給阿公阿嬤">
+      <meta itemprop="description" content="你家附近有回收的阿公阿嬤嗎? 請幫我們把他們的地址填入問卷 我們將用這個資料，建立一個回收點地圖，讓大家都可以把家裡的回收附近有在收回收的阿公阿嬤 PS:我們會的工具不多，如果有攻城師想到更好的方式，也請不吝指教 PS:如果可以的話，盡可能取得阿公阿嬤公開資料的同意，避免造成他們的困擾">
       <meta itemprop="url" content="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform">
       <meta itemprop="embedUrl" content="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform?embedded=true">
       <meta itemprop="faviconUrl" content="http://junsuwhy.github.io/whereisama/img/logo.png">
@@ -66,7 +61,7 @@
   bottom: 0;"></iframe>
         </div>
         <div class="ss-form-container">
-        <div class="ss-top-of-page"><div class="ss-form-heading"><h1 class="ss-form-title" dir="ltr">&#22823;&#23478;&#19968;&#36215;&#25226;&#22238;&#25910;&#25343;&#32102;&#38463;&#20844;&#38463;&#23332;&#12304;&#20849;8&#38988;&#12305;</h1>
+        <div class="ss-top-of-page"><div class="ss-form-heading"><h1 class="ss-form-title" dir="ltr">大家一起把回收拿給阿公阿嬤</h1>
           <div class="ss-form-desc ss-no-ignore-whitespace">你家附近有收回收的阿公阿嬤嗎?<br>請幫我們把他們的地址填入問卷<br>我們將用這個資料，建立一個回收點地圖<br>請大家把家裡的回收拿給附近的阿公阿嬤<p class='hide'><br>PS:我們會的工具不多，如果有攻城師想到更好的方式，也請不吝指教<br>PS:如果可以的話，盡可能取得阿公阿嬤公開資料的同意，避免造成他們的困擾</p></div>
           <hr class="ss-email-break" style="display:none;">
         </div></div>
@@ -211,7 +206,7 @@
         var point = add_tag(agoma_array[i]['附近地標'],'附近地標',"div");
         var start = add_tag(agoma_array[i]['回收時間-開始'],'開始回收時間',"div");
         var end = add_tag(agoma_array[i]['回收時間-結束'],'結束回收時間',"div");
-        var other = add_tag(agoma_array[i]['意見回饋'],'',"div");
+        var other = add_tag(agoma_array[i]['意見回饋'],'',"div","other");
         var text = name + address + point + start + end + other;
 
         var marker = L.marker([agoma_array[i]['緯度'], agoma_array[i]['經度']]).addTo(map)
@@ -222,9 +217,10 @@
       $('.load').hide();
     };
 
-    function add_tag(val,name , tag){
+    function add_tag(val,name , htmltag, classname){
       name = (name == "")?"":name+ "：";
-      return (val=="")?"":"<"+tag+">" + name + val + "</"+tag+">";
+      myclass = (typeof classname == "undefined")? "": " class="+classname;
+      return (val=="")?"":"<"+htmltag+myclass+">" + name + val + "</"+htmltag+">";
     }
 </script>
       

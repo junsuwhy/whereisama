@@ -151,6 +151,7 @@ iframe.map{
   border: none;
 }
 
+
 #map{
   clear:both;
   height:500px;
@@ -161,4 +162,11 @@ iframe.map{
   z-index: 900;
   left: 50%;
   top: 50%;
+}
+
+/**
+ * 地圖
+ */
+.other{
+  color:#444;
 }
