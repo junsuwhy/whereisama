@@ -1,0 +1,34 @@
+.node-div-wrapper{
+  margin-top: 80px;
+  font-size: 12pt;
+  width: 320px;
+  border-top: 8px #000 solid;
+  padding-top: 18px;
+}
+#map{
+  width:320px;
+  height:200px;
+  /*float:right;*/
+}
+.node-div{
+  display:none;
+}
+.node-div>div{
+  margin-bottom: 20px
+}
+.node-div .val-span{
+  display:block;
+  clear:both;
+}
+/*.node-div span{
+  margin-right: 10px;
+}*/
+.node-div>div>div{
+  border-bottom: 1px #999 solid;
+  height:1.1em;
+}
+.node-div .tag-span{
+  float:right;
+  color:#999;
+  /*border-bottom: 1px #999 solid;*/
+}

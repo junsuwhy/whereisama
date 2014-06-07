@@ -52,7 +52,7 @@
       <div class="all-container">
         <div class="background-div"></div>
         <div class="ss-header-image">
-          
+          <a href="./"><img src="img/ama-logo-background.jpg"/></a>
           <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fgive.them.to.ago.ama&amp;width=200&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=1436418016572374" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; 
   overflow:hidden; 
   width:200px; 
@@ -202,12 +202,12 @@
        */
       if(!isNaN(parseFloat(agoma_array[i]['緯度'])) && !isNaN(parseFloat(agoma_array[i]['經度']))){
         var name = add_tag(agoma_array[i]['稱呼'],"","h3");
-        var address = add_tag(agoma_array[i]['地址'],'地址',"div");
+        var address = '<a href="https://www.google.com.tw/maps/place/'+agoma_array[i]['地址']+'" target="_blank" >'+add_tag(agoma_array[i]['地址'],'地址',"div")+'</a>';
         var point = add_tag(agoma_array[i]['附近地標'],'附近地標',"div");
         var start = add_tag(agoma_array[i]['回收時間-開始'],'開始回收時間',"div");
         var end = add_tag(agoma_array[i]['回收時間-結束'],'結束回收時間',"div");
         var other = add_tag(agoma_array[i]['意見回饋'],'',"div","other");
-        var text = name + address + point + start + end + other;
+        var text = name +address + point + start + end + other;
 
         var marker = L.marker([agoma_array[i]['緯度'], agoma_array[i]['經度']]).addTo(map)
         .bindPopup(text);
