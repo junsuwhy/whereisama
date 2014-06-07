@@ -78,6 +78,9 @@ a:hover {
   padding-right: 20px;
   padding-top:10px;
 }
+.max-width{
+  width:315px;
+}
 .clear-both{
   clear:both;
 }
