@@ -24,7 +24,8 @@
   ga('send', 'pageview');
 
 </script>
-
+<script type='text/javascript' src='js/jquery-1.10.2.min.js'></script>
+              
       <link rel="alternate" type="text/xml+oembed" href="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/oembed?url=https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/viewform&amp;format=xml">
       <meta name="viewport" content="width=device-width">
       <meta property="og:title" content="大家一起把回收拿給阿公阿嬤"><meta property="og:type" content="article"><meta property="og:site_name" content="幫阿公阿嬤做回收"><meta property="og:url" content="http://junsuwhy.github.io/whereisama/"><meta property="og:image" content="http://junsuwhy.github.io/whereisama/img/amabg.png"><meta property="og:image:width" content="400"><meta property="og:image:height" content="265"><meta property="og:description" content="你家附近有回收的阿公阿嬤嗎?
@@ -44,7 +45,7 @@
       <div class="all-container">
         <div class="background-div"></div>
         <div class="ss-header-image">
-          <a href="./"><img src="img/ama-logo-background.jpg"/></a>
+          <a href="./" target="_self"><img src="img/ama-logo-background.jpg"/></a>
           <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fgive.them.to.ago.ama&amp;width=200&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=1436418016572374" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; 
   overflow:hidden; 
   width:200px; 
@@ -95,9 +96,11 @@
           </div>
         </div>
 
-<div id="map" ><div class="load"><img src="img/loader.gif"/></div></div>
+<div class="map-wrapper">
+  <div id="map" ><div class="load"><img src="img/loader.gif"/></div></div>
+</div>
 <script>
-  var map = L.map('map',{'scrollWheelZoom':false,}).setView([23.675,121.264], 7);
+  var map = L.map('map',{'scrollWheelZoom':false,}).setView([23.675,121.264], 5);
   mapLink =
     '<a href="http://openstreetmap.org">OpenStreetMap</a>';
   L.tileLayer(
@@ -116,6 +119,7 @@
     // console.log(data);
     agoma_array = data.sheet1.elements;
 
+    try{
     //取得阿公阿嬤編號
     url = location.href;
     agoama = parseInt(url.match(/agoama=(\d+)/g)[0].split("=")[1]);
@@ -142,7 +146,7 @@
        */
       if(!isNaN(parseFloat(agoma_array[i]['緯度'])) && !isNaN(parseFloat(agoma_array[i]['經度']))){
         var name = add_tag(agoma_array[i]['稱呼'],"","h3");
-        var address = add_tag(agoma_array[i]['地址'],'地址',"div");
+        var address = '<a href="https://www.google.com.tw/maps/place/'+agoma_array[i]['地址']+'" target="_blank" >'+add_tag(agoma_array[i]['地址'],'地址',"div")+'</a>';
         var point = add_tag(agoma_array[i]['附近地標'],'附近地標',"div");
         var start = add_tag(agoma_array[i]['回收時間-開始'],'開始回收時間',"div");
         var end = add_tag(agoma_array[i]['回收時間-結束'],'結束回收時間',"div");
@@ -159,9 +163,10 @@
         }
       }
       
-      $('.load').hide();
+      $('.load').hide('slow');
       
-      if(typeof agoama !== "undefined"){
+      has_error = false;
+      if(typeof agoma_array[agoama] !== "undefined"){
         i=agoama;
         $('.node-name .val-h2').html(agoma_array[i]['稱呼']);
         $('.node-address .val-span').text(agoma_array[i]['地址']);
@@ -170,8 +175,16 @@
         $('.node-end .val-span').text(agoma_array[i]['結束回收時間']);
         $('.node-other .val-span').text(agoma_array[i]['意見回饋']);
         map.setView([agoma_array[i]['緯度'], agoma_array[i]['經度']], 15);
+        
+      }else{
+        is_error();
+      }
+    }catch(e){
+        is_error();
+
       }
       $('.node-div').show('slow');
+
 
 
 
@@ -182,9 +195,16 @@
       myclass = (typeof classname == "undefined")? "": " class="+classname;
       return (val=="")?"":"<"+htmltag+myclass+">" + name + val + "</"+htmltag+">";
     }
+
+    function is_error(){
+      $('.map-wrapper').remove();
+        $('.node-div').html('登愣 !! 這個網址似乎是有問題 !! <br>麻煩請在下面留言處描述一下<br>從哪裡連到這個網頁的，<br>我們會儘快解決它，感激不盡ＱＱ。');
+        $('.addition').hide();
+        $('.textarea').html('<p>YYY</p>');
+    }
 </script>
       
-
+<div class="addition">有什麼想要補充的，可在下面留言喔!!<br>我們會幫您更新資訊。</div>
         <div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -203,7 +223,6 @@
 
       </div>
 
-              <script type='text/javascript' src='js/jquery-1.10.2.min.js'></script>
               
               
           </div></body></html>

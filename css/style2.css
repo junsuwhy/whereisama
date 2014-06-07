@@ -163,6 +163,10 @@ iframe.map{
   left: 50%;
   top: 50%;
 }
+.load img{
+  margin-left: -20px;
+  margin-top: -20px;
+}
 
 /**
  * 地圖
