@@ -146,6 +146,9 @@ div.ss-submit div.ss-form-entry {
   background: #fff;
   /*border:1px #fff solid;*/
 }
+#navigation-table{
+  clear:both;
+}
 #ss-submit:hover{
   
 }
