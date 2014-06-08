@@ -151,7 +151,9 @@
         var start = add_tag(agoma_array[i]['回收時間-開始'],'開始回收時間',"div");
         var end = add_tag(agoma_array[i]['回收時間-結束'],'結束回收時間',"div");
         var other = add_tag(agoma_array[i]['意見回饋'],'',"div","other");
-        var text = name + address + point + start + end + other;
+        var link_node ="";
+        // var link_node = add_tag('<a target="_self" href="./node.html?agoama='+i+'">補充資訊</a>','',"div");
+        var text = name + address + point + start + end + other + link_node;
 
         if(i==agoama){
           var marker = L.marker([agoma_array[i]['緯度'], agoma_array[i]['經度']],{icon:redMarker}).addTo(map).bindPopup(text);

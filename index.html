@@ -62,16 +62,26 @@
         </div>
         <div class="ss-form-container">
         <div class="ss-top-of-page"><div class="ss-form-heading"><h1 class="ss-form-title" dir="ltr">大家一起把回收拿給阿公阿嬤</h1>
-          <div class="ss-form-desc ss-no-ignore-whitespace">你家附近有收回收的阿公阿嬤嗎?<br>請幫我們把他們的地址填入問卷<br>我們將用這個資料，建立一個回收點地圖<br>請大家把家裡的回收拿給附近的阿公阿嬤<p class='hide'><br>PS:我們會的工具不多，如果有攻城師想到更好的方式，也請不吝指教<br>PS:如果可以的話，盡可能取得阿公阿嬤公開資料的同意，避免造成他們的困擾</p></div>
+          <div class="ss-form-desc ss-no-ignore-whitespace">你家附近有收回收的阿公阿嬤嗎?<br>請幫我們把他們的地址填入問卷<br>我們將用這個資料，建立一個<a href="#map" target="_self" onClick='click_handler(this); return false;'>回收點地圖</a><br>請大家把家裡的回收拿給附近的阿公阿嬤<p class='hide'><br>PS:我們會的工具不多，如果有攻城師想到更好的方式，也請不吝指教<br>PS:如果可以的話，盡可能取得阿公阿嬤公開資料的同意，避免造成他們的困擾</p></div>
           <hr class="ss-email-break" style="display:none;">
         </div></div>
+        <script type="text/javascript">
+          function click_handler(html){
+            var jq = $(html);
+            var tg = jq.attr("href");
+            var state = { href: tg};
+            history.pushState(state, document.title, state.href);
+            $("html, body").animate({scrollTop:function(){return $(tg).position().top}()},700,"swing",function(){});
+          }
+
+        </script>
         <div class="ss-form"><iframe name="iframe_spgwpnep" id="iframe_spgwpnep" style="display:none;" onload="if(typeof sent_spgwpnep!='undefined'){window.location='thankyou.html';}"></iframe><form action="https://docs.google.com/forms/d/1x64IhdUPES5JXaL2pCh6mn0y-zKN6C7BksBUKdRXFa0/formResponse" method="POST" id="ss-form" target="iframe_spgwpnep" onsubmit="sent_spgwpnep=true"><ol role="list" class="ss-question-list" style="padding-left: 0">
           <div class="ss-form-question errorbox-good" role="listitem">
             <div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry">
               <label class="ss-q-item-label" for="entry_1281161739"><div class="ss-q-title">稱呼
               </div>
               <div class="ss-q-help ss-secondary-text" dir="ltr">阿公阿嬤怎麼稱呼? ex: 李爺爺</div></label>
-              <input type="text" name="entry.1281161739" value="" class="ss-q-short" id="entry_1281161739" dir="auto" aria-label="稱呼 阿公阿嬤怎麼稱呼? ex: 李爺爺 " title="">
+              <input type="text" name="entry.1281161739" value="" class="ss-q-short" id="entry_1281161739" dir="auto" title="">
               <div class="error-message"></div>
               <div class="required-message">This is a required question</div>
             </div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
@@ -79,9 +89,9 @@
               <label class="ss-q-item-label" for="entry_1674615426"><div class="ss-q-title">性別
               </div>
               <div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-              <ul class="ss-choices" role="radiogroup" aria-label="性別  "><li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.759242214" value="&#30007;" id="group_759242214_1" role="radio" class="ss-q-radio" aria-label="&#30007;"></span>
+              <ul class="ss-choices" role="radiogroup" ><li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.759242214" value="&#30007;" id="group_759242214_1" role="radio" class="ss-q-radio" aria-label="&#30007;"></span>
               <span class="ss-choice-label">男</span>
-              </label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.759242214" value="&#22899;" id="group_759242214_2" role="radio" class="ss-q-radio" aria-label="&#22899;"></span>
+              </label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.759242214" value="&#22899;" id="group_759242214_2" role="radio" class="ss-q-radio" ></span>
               <span class="ss-choice-label">女</span>
             </label></li></ul>
             <div class="error-message"></div>
@@ -90,7 +100,7 @@
               <label class="ss-q-item-label" for="entry_1619101833"><div class="ss-q-title">回收區域
               </div>
               <div class="ss-q-help ss-secondary-text" dir="ltr">希望是以 Google 地圖能夠搜尋到地點的地址為主，<br>若不知道確切地址可寫大約的範圍，例如 :民生社區</div></label>
-              <textarea name="entry.1619101833" rows="8" cols="0" class="ss-q-long" id="entry_1619101833" dir="auto" aria-label="【地址】 不知道確切地址的話，請填一個大致的位罝，請詳填【附近地標】 "></textarea>
+              <textarea name="entry.1619101833" rows="8" cols="0" class="ss-q-long" id="entry_1619101833" dir="auto" ></textarea>
               <div class="error-message"></div>
               <div class="required-message">This is a required question</div>
             </div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
@@ -98,7 +108,7 @@
               <label class="ss-q-item-label" for="entry_580016502"><div class="ss-q-title">附近地標
               </div>
               <div class="ss-q-help ss-secondary-text" dir="ltr">填入備註或附近地標以供辨識 <br>例如: 辛亥捷運站前的7-11</div></label>
-              <textarea name="entry.580016502" rows="8" cols="0" class="ss-q-long" id="entry_580016502" dir="auto" aria-label="【附近地標】 無法提供確切地址的話，可填入備註與附近地標以供辨識 "></textarea>
+              <textarea name="entry.580016502" rows="8" cols="0" class="ss-q-long" id="entry_580016502" dir="auto" ></textarea>
               <div class="error-message"></div>
               <div class="required-message">This is a required question</div>
             </div></div></div> <div class="ss-form-question errorbox-good hide" role="listitem">
@@ -106,7 +116,7 @@
               <label class="ss-q-item-label" for="entry_784579707"><div class="ss-q-title">回收項目
               </div>
               <div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-              <ul class="ss-choices" role="group" aria-label="回收項目  "><li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.2102745186" value="&#22609;&#33184;" id="group_2102745186_1" role="checkbox" class="ss-q-checkbox"></span>
+              <ul class="ss-choices" role="group" ><li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.2102745186" value="&#22609;&#33184;" id="group_2102745186_1" role="checkbox" class="ss-q-checkbox"></span>
               <span class="ss-choice-label">塑膠</span>
               </label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.2102745186" value="&#37941;&#37569;&#32592;" id="group_2102745186_2" role="checkbox" class="ss-q-checkbox"></span>
               <span class="ss-choice-label">鐵鋁罐</span>
@@ -126,11 +136,11 @@
               </div>
               <div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
               <div class="ss-q-time"><div class="ss-datetime-box goog-inline-block" dir="ltr">
-<select name="entry.360913685_ampm" aria-label="AM or PM"><option value="AM">上午</option>
+<select name="entry.360913685_ampm" ><option value="AM">上午</option>
               <option value="PM">下午</option></select>
-                <select name="entry.360913685_hour" id="entry.360913685_hour" aria-label="Hour"><option value="">時</option>
+                <select name="entry.360913685_hour" id="entry.360913685_hour" ><option value="">時</option>
               <option value="01">01</option> <option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option> <option value="06">06</option> <option value="07">07</option> <option value="08">08</option> <option value="09">09</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option></select>
-              <select name="entry.360913685_minute" id="entry.360913685_minute" aria-label="Minute"><option value="">分</option>
+              <select name="entry.360913685_minute" id="entry.360913685_minute" ><option value="">分</option>
               <option value="00">00</option> <option value="01">01</option> <option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option> <option value="06">06</option> <option value="07">07</option> <option value="08">08</option> <option value="09">09</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option> <option value="24">24</option> <option value="25">25</option> <option value="26">26</option> <option value="27">27</option> <option value="28">28</option> <option value="29">29</option> <option value="30">30</option> <option value="31">31</option> <option value="32">32</option> <option value="33">33</option> <option value="34">34</option> <option value="35">35</option> <option value="36">36</option> <option value="37">37</option> <option value="38">38</option> <option value="39">39</option> <option value="40">40</option> <option value="41">41</option> <option value="42">42</option> <option value="43">43</option> <option value="44">44</option> <option value="45">45</option> <option value="46">46</option> <option value="47">47</option> <option value="48">48</option> <option value="49">49</option> <option value="50">50</option> <option value="51">51</option> <option value="52">52</option> <option value="53">53</option> <option value="54">54</option> <option value="55">55</option> <option value="56">56</option> <option value="57">57</option> <option value="58">58</option> <option value="59">59</option></select>
               
               <div class="ss-datetime-box-spacer goog-inline-block"></div></div></div></div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
@@ -138,10 +148,10 @@
                 <label class="ss-q-item-label" for="entry_1027347965"><div class="ss-q-title">回收時間(結束)
                 </div>
                 <div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-                <div class="ss-q-time"><div class="ss-datetime-box goog-inline-block" dir="ltr"><select name="entry.1027347965_ampm" aria-label="AM or PM"><option value="AM">上午</option>
-                <option value="PM">下午</option></select><select name="entry.1027347965_hour" id="entry.1027347965_hour" aria-label="Hour"><option value="">時</option>
+                <div class="ss-q-time"><div class="ss-datetime-box goog-inline-block" dir="ltr"><select name="entry.1027347965_ampm" ><option value="AM">上午</option>
+                <option value="PM">下午</option></select><select name="entry.1027347965_hour" id="entry.1027347965_hour" ><option value="">時</option>
                 <option value="01">01</option> <option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option> <option value="06">06</option> <option value="07">07</option> <option value="08">08</option> <option value="09">09</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option></select>
-                <select name="entry.1027347965_minute" id="entry.1027347965_minute" aria-label="Minute"><option value="">分</option>
+                <select name="entry.1027347965_minute" id="entry.1027347965_minute" ><option value="">分</option>
                 <option value="00">00</option> <option value="01">01</option> <option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option> <option value="06">06</option> <option value="07">07</option> <option value="08">08</option> <option value="09">09</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option> <option value="24">24</option> <option value="25">25</option> <option value="26">26</option> <option value="27">27</option> <option value="28">28</option> <option value="29">29</option> <option value="30">30</option> <option value="31">31</option> <option value="32">32</option> <option value="33">33</option> <option value="34">34</option> <option value="35">35</option> <option value="36">36</option> <option value="37">37</option> <option value="38">38</option> <option value="39">39</option> <option value="40">40</option> <option value="41">41</option> <option value="42">42</option> <option value="43">43</option> <option value="44">44</option> <option value="45">45</option> <option value="46">46</option> <option value="47">47</option> <option value="48">48</option> <option value="49">49</option> <option value="50">50</option> <option value="51">51</option> <option value="52">52</option> <option value="53">53</option> <option value="54">54</option> <option value="55">55</option> <option value="56">56</option> <option value="57">57</option> <option value="58">58</option> <option value="59">59</option></select>
                 
                 <div class="ss-datetime-box-spacer goog-inline-block"></div></div></div></div></div></div> <div class="ss-form-question errorbox-good clear-both width-all" role="listitem">
@@ -149,7 +159,7 @@
                   <label class="ss-q-item-label" for="entry_1456811837"><div class="ss-q-title">備註
                   </div>
                   <div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-                  <textarea name="entry.1456811837" rows="8" cols="0" class="ss-q-long" id="entry_1456811837" dir="auto" aria-label="備註  "></textarea>
+                  <textarea name="entry.1456811837" rows="8" cols="0" class="ss-q-long" id="entry_1456811837" dir="auto" ></textarea>
                   <div class="error-message"></div>
                   <div class="required-message">This is a required question</div>
                 </div></div></div>
@@ -167,6 +177,14 @@
 
 
 <div id="map" ><div class="load"><img src="img/loader.gif"/></div></div>
+<div class="search-map-wrapper">
+  <div class="search-map-div">
+    <form class="search-map-form" action="javascript:void(0);">
+                <input type="text" name="search-map" class="ss-q-short" id="search-map-text" dir="auto">
+  <input type="submit" name="submit" value="搜尋" id="search-map-submit">
+</form>
+              </div>
+</div>
 <script>
   var map = L.map('map',{'scrollWheelZoom':false,}).setView([23.675,121.264], 7);
   mapLink =
@@ -207,7 +225,9 @@
         var start = add_tag(agoma_array[i]['回收時間-開始'],'開始回收時間',"div");
         var end = add_tag(agoma_array[i]['回收時間-結束'],'結束回收時間',"div");
         var other = add_tag(agoma_array[i]['意見回饋'],'',"div","other");
-        var text = name +address + point + start + end + other;
+        var link_node ="";
+        // var link_node = add_tag('<a target="_self" href="./node.html?agoama='+i+'">補充資訊</a>','',"div");
+        var text = name +address + point + start + end + other+link_node;
 
         var marker = L.marker([agoma_array[i]['緯度'], agoma_array[i]['經度']]).addTo(map)
         .bindPopup(text);
@@ -222,15 +242,54 @@
       myclass = (typeof classname == "undefined")? "": " class="+classname;
       return (val=="")?"":"<"+htmltag+myclass+">" + name + val + "</"+htmltag+">";
     }
+
+    $('.search-map-form').submit(function(){
+      address = $('#search-map-text').val();
+      if(address !== ""){
+        $.ajax({
+          url: 'https://maps.googleapis.com/maps/api/geocode/json',
+          //type: 'default GET (Other values: POST)',
+          // dataType: 'json',
+          data: {
+            sensor  : false,
+            address : address
+          },
+        })
+        .done(function(data) {
+          if(data.status=="OK"){
+            //成功
+            d = data;
+            var nelat=data.results[0].geometry.viewport.northeast.lat;
+            var nelng=data.results[0].geometry.viewport.northeast.lng;
+            var swlat=data.results[0].geometry.viewport.southwest.lat;
+            var swlng=data.results[0].geometry.viewport.southwest.lng;
+            map.fitBounds([
+              [nelat, nelng],
+              [swlat, swlng]
+            ]);
+          }else{
+            //失敗
+            //d = data;
+            //d.status=="ZERO_RESULTS";
+            
+          }
+          
+        })
+        .fail(function() {
+          //console.log("error");
+        })
+        .always(function() {
+          //console.log("complete");
+        });
+        
+      }
+    })
 </script>
       
       </div>
               <script type='text/javascript' src='https://docs.google.com/static/forms/client/js/3625253292-formviewer_prd.js'></script>
               
-              <script type="text/javascript">H5F.setup(document.getElementById('ss-form'));_initFormViewer(
-              "[100,\x22#222222\x22,[]\n]\n");
               
-            </script>
           
 
           </div></body></html>

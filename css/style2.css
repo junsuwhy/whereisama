@@ -87,7 +87,9 @@ a:hover {
 
 .ss-form-entry input, 
 .ss-form-entry textarea, 
-.ss-form-entry select{
+.ss-form-entry select,
+.search-map-div .ss-q-short,
+.search-map-div #search-map-submit{
   border: 1px solid #000;
   background: rgba(1,1,1,0);
 }
@@ -139,7 +141,8 @@ div.ss-submit div.ss-form-entry {
   background: none;
   border: none;
 }
-#ss-submit{
+#ss-submit,
+.search-map-div #search-map-submit{
   background: #fff;
   /*border:1px #fff solid;*/
 }
@@ -154,7 +157,9 @@ iframe.map{
   border: none;
 }
 
-
+/**
+ * 大地圖
+ */
 #map{
   clear:both;
   height:500px;
@@ -170,9 +175,24 @@ iframe.map{
   margin-left: -20px;
   margin-top: -20px;
 }
+/**
+ * 搜尋
+ */
+.search-map-wrapper{
+  position: relative;
+}
+.search-map-div{
+  position: absolute;
+  top: -540px;
+  left: 50px;
+}
+#search-map-text{
+  background-color: #fff;
+  width:200px;
+}
 
 /**
- * 地圖
+ * 地圖內泡泡
  */
 .other{
   color:#444;
