@@ -15,7 +15,7 @@ a:hover {
   display:none;
 }
 .background-div{
-  background: url(../img/amabg.png) no-repeat 100% 45px;
+  background: url(../img/amabg.jpg) no-repeat 100% 45px;
   width: 960px;
   height: 368px;
   position: fixed;
@@ -24,7 +24,7 @@ a:hover {
   margin: 0 auto;
 }
 .all-container{
-  /*background: url(../img/amabg.png) no-repeat 100% 0;*/
+  /*background: url(../img/amabg.jpg) no-repeat 100% 0;*/
   width:960px;
   margin:0 auto;
 }
