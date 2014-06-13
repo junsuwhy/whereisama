@@ -225,7 +225,7 @@
         var point = add_tag(agoma_array[i]['附近地標'],'附近地標',"div");
         var start = add_tag(agoma_array[i]['回收時間-開始'],'開始回收時間',"div");
         var end = add_tag(agoma_array[i]['回收時間-結束'],'結束回收時間',"div");
-        var other = add_tag(agoma_array[i]['意見回饋'],'',"div","other");
+        var other = add_tag(break_line(agoma_array[i]['意見回饋']),'',"div","other");
         // var link_node ="";
         var link_node = add_tag('<a target="_self" href="./node.html?agoama='+i+'">補充資訊</a>','',"div");
         var text = name +address + point + start + end + other+link_node;
@@ -237,6 +237,10 @@
       }
       $('.load').hide('slow');
     };
+
+    function break_line(text){
+      return text.replace(/\n/g,"<br>");
+    }
 
     function add_tag(val,name , htmltag, classname){
       name = (name == "")?"":name+ "：";

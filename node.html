@@ -147,11 +147,11 @@
        */
       if(!isNaN(parseFloat(agoma_array[i]['緯度'])) && !isNaN(parseFloat(agoma_array[i]['經度']))){
         var name = add_tag(agoma_array[i]['稱呼'],"","h3");
-        var address = '<a href="https://www.google.com.tw/maps/place/'+agoma_array[i]['地址']+'" target="_blank" >'+add_tag(agoma_array[i]['地址'],'地址',"div")+'</a>';
+        var address = add_tag(agoma_array[i]['地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoma_array[i]['地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
         var point = add_tag(agoma_array[i]['附近地標'],'附近地標',"div");
         var start = add_tag(agoma_array[i]['回收時間-開始'],'開始回收時間',"div");
         var end = add_tag(agoma_array[i]['回收時間-結束'],'結束回收時間',"div");
-        var other = add_tag(agoma_array[i]['意見回饋'],'',"div","other");
+        var other = add_tag(break_line(agoma_array[i]['意見回饋']),'',"div","other");
         // var link_node ="";
         var link_node = add_tag('<a target="_self" href="./node.html?agoama='+i+'">補充資訊</a>','',"div");
         var text = name + address + point + start + end + other + link_node;
@@ -176,7 +176,7 @@
         $('.node-point .val-span').text(agoma_array[i]['附近地標']);
         $('.node-start .val-span').text(agoma_array[i]['開始回收時間']);
         $('.node-end .val-span').text(agoma_array[i]['結束回收時間']);
-        $('.node-other .val-span').text(agoma_array[i]['意見回饋']);
+        $('.node-other .val-span').html(break_line(agoma_array[i]['意見回饋']));
         map.setView([agoma_array[i]['緯度'], agoma_array[i]['經度']], 15);
         
       }else{
@@ -193,6 +193,10 @@
 
 
     };
+
+    function break_line(text){
+      return text.replace(/\n/g,"<br>");
+    }
 
     function add_tag(val,name , htmltag, classname){
       name = (name == "")?"":name+ "：";
