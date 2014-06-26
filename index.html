@@ -7,9 +7,11 @@
   <title>大家一起把回收拿給阿公阿嬤</title>
   <link href='css/style2.css' type='text/css' rel='stylesheet'>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+  <link href='css/Leaflet.awesome-markers.css' type='text/css' rel='stylesheet'>
 
     <link href='https://docs.google.com/static/forms/client/css/212514800-mobile_formview_ltr.css' type='text/css' rel='stylesheet' media='screen and (max-device-width: 721px)'>
     <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+    <script src="js/leaflet.awesome-markers.min.js"></script>
       <script type="text/javascript">
       /**
       * @license
@@ -63,7 +65,7 @@
         </div>
         <div class="ss-form-container">
         <div class="ss-top-of-page"><div class="ss-form-heading"><h1 class="ss-form-title" dir="ltr">大家一起把回收拿給阿公阿嬤</h1>
-          <div class="ss-form-desc ss-no-ignore-whitespace">你家附近有收回收的阿公阿嬤嗎?<br>請幫我們把他們的地址填入問卷<br>我們將用這個資料，建立一個<a href="#map" target="_self" onClick='click_handler(this); return false;'>回收點地圖</a><br>請大家把家裡的回收拿給附近的阿公阿嬤<p class='hide'><br>PS:我們會的工具不多，如果有攻城師想到更好的方式，也請不吝指教<br>PS:如果可以的話，盡可能取得阿公阿嬤公開資料的同意，避免造成他們的困擾</p></div>
+          <div class="ss-form-desc ss-no-ignore-whitespace">你家附近有收回收的阿公阿嬤嗎?<br>請幫我們把他們的地址填入問卷<br>我們將用這個資料，建立一個<a href="#map" target="_self" onClick="click_handler(this);ga('send', 'event', 'click', '#map', 'up'); return false;">回收點地圖</a><br>請大家把家裡的回收拿給附近的阿公阿嬤<p class='hide'><br>PS:我們會的工具不多，如果有攻城師想到更好的方式，也請不吝指教<br>PS:如果可以的話，盡可能取得阿公阿嬤公開資料的同意，避免造成他們的困擾</p></div>
           <hr class="ss-email-break" style="display:none;">
         </div></div>
         <script type="text/javascript">
@@ -187,66 +189,12 @@
               </div>
 </div>
 <script>
-  var map = L.map('map',{'scrollWheelZoom':false,}).setView([23.675,121.264], 7);
-  mapLink =
-    '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-  L.tileLayer(
-    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; ' + mapLink,
-      maxZoom: 18,
-    }).addTo(map);
-
-  Tabletop.init({
-    key: '1r8geMv62QiLS3rZFVSjn_q-nt_tfOqIxFmJOUP_OiH0',
-    callback: afterLoadSheet,
-    simpleSheet: false
-  });
-
-  function afterLoadSheet(data, tabletop) {
-    // console.log(data);
-    agoma_array = data.sheet1.elements;
-    for (var i = 0; i < agoma_array.length; i++) {
-      /*
-          回收時間-結束: "17:00"
-          回收時間-開始: "09:00"
-          回收項目: ""
-          地址: "台灣台中市北區興進路218巷"
-          性別: "女"
-          意見回饋: ""
-          時間戳記: "2014/5/10 下午 11:42:23"
-          稱呼: "婆婆"
-          經度: "120.6921969"
-          緯度: "24.156139"
-          附近地標: "湖南味小吃"
-       */
-      if(!isNaN(parseFloat(agoma_array[i]['緯度'])) && !isNaN(parseFloat(agoma_array[i]['經度']))){
-        var name = add_tag(agoma_array[i]['稱呼'],"","h3");
-        var address = add_tag(agoma_array[i]['地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoma_array[i]['地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
-        var point = add_tag(agoma_array[i]['附近地標'],'附近地標',"div");
-        var start = add_tag(agoma_array[i]['回收時間-開始'],'開始回收時間',"div");
-        var end = add_tag(agoma_array[i]['回收時間-結束'],'結束回收時間',"div");
-        var other = add_tag(break_line(agoma_array[i]['意見回饋']),'',"div","other");
-        // var link_node ="";
-        var link_node = add_tag('<a target="_self" href="./node.html?agoama='+i+'">補充資訊</a>','',"div");
-        var text = name +address + point + start + end + other+link_node;
-
-        var marker = L.marker([agoma_array[i]['緯度'], agoma_array[i]['經度']]).addTo(map)
-        .bindPopup(text);
-
-        }
-      }
-      $('.load').hide('slow');
-    };
-
-    function break_line(text){
-      return text.replace(/\n/g,"<br>");
-    }
-
-    function add_tag(val,name , htmltag, classname){
-      name = (name == "")?"":name+ "：";
-      myclass = (typeof classname == "undefined")? "": " class="+classname;
-      return (val=="")?"":"<"+htmltag+myclass+">" + name + val + "</"+htmltag+">";
-    }
+    cur_lat=0;
+    cur_lng=0;
+    cur_zoom=0;
+    update_url = false;
+    cur_agoama=-1;
+    pre_para = location.href.match(/index\.html/g)?'index.html':'';
 
     $('.search-map-form').submit(function(){
       address = $('#search-map-text').val();
@@ -289,6 +237,147 @@
         
       }
     })
+
+
+  var map = L.map('map',{'scrollWheelZoom':false,}).setView([23.675,121.264], 7);
+  mapLink =
+    '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+  L.tileLayer(
+    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; ' + mapLink,
+      maxZoom: 18,
+    }).addTo(map);
+
+  Tabletop.init({
+    key: '1r8geMv62QiLS3rZFVSjn_q-nt_tfOqIxFmJOUP_OiH0',
+    callback: afterLoadSheet,
+    simpleSheet: false
+  });
+
+  
+  function afterLoadSheet(data, tabletop) {
+
+    try{
+    //取得阿公阿嬤編號
+    
+    var url = location.href;
+    var url_agoama = url.match(/agoama=[^&#]*/g)?parseInt(url.match(/agoama=[^&#]*/g)[0].split("=")[1]):null;
+    if(url_agoama){
+      cur_agoama = url_agoama;
+    }
+    var url_address = url.match(/address=([^&#]*)/g)?decodeURI(url.match(/address=[^&#]*/g)[0].split("=")[1]):null;
+    var url_lat = url.match(/lat=[^&#]*/g)?parseFloat(url.match(/lat=[^&#]*/g)[0].split("=")[1]):null;
+    var url_lng = url.match(/lng=[^&#]*/g)?parseFloat(url.match(/lng=[^&#]*/g)[0].split("=")[1]):null;
+    var url_zoom = url.match(/zoom=[^&#]*/g)?parseInt(url.match(/zoom=[^&#]*/g)[0].split("=")[1]):null;
+    
+
+    var redMarker = L.AwesomeMarkers.icon({
+        icon: 'star',
+        markerColor: 'yellow'
+      });
+
+
+
+
+    // console.log(data);
+    agoma_array = data.sheet1.elements;
+    var arr_markers=[];
+
+    for (var i = 0; i < agoma_array.length; i++) {
+      /*
+          回收時間-結束: "17:00"
+          回收時間-開始: "09:00"
+          回收項目: ""
+          地址: "台灣台中市北區興進路218巷"
+          性別: "女"
+          意見回饋: ""
+          時間戳記: "2014/5/10 下午 11:42:23"
+          稱呼: "婆婆"
+          經度: "120.6921969"
+          緯度: "24.156139"
+          附近地標: "湖南味小吃"
+       */
+      if(!isNaN(parseFloat(agoma_array[i]['緯度'])) && !isNaN(parseFloat(agoma_array[i]['經度']))){
+        var name = add_tag(agoma_array[i]['稱呼'],"","h3");
+        var address = add_tag(agoma_array[i]['地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoma_array[i]['地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
+        var point = add_tag(agoma_array[i]['附近地標'],'附近地標',"div");
+        var start = add_tag(agoma_array[i]['回收時間-開始'],'開始回收時間',"div");
+        var end = add_tag(agoma_array[i]['回收時間-結束'],'結束回收時間',"div");
+        var other = add_tag(break_line(agoma_array[i]['意見回饋']),'',"div","other");
+        // var link_node ="";
+        var link_node = add_tag('<a target="_self" href="./node.html?agoama='+i+'">補充資訊</a>','',"div");
+        var text = name +address + point + start + end + other+link_node;
+
+        arr_markers[i] = L.marker([agoma_array[i]['緯度'], agoma_array[i]['經度']]).addTo(map)
+        .bindPopup(text);
+        arr_markers[i].id=i;
+
+        }
+      }
+
+      //處理完阿公阿嬤的點了
+      
+      //處理初始畫面
+      if(url_agoama){
+        arr_markers[url_agoama].openPopup();
+      }
+
+      if(url_address){
+        $('#search-map-text').val(url_address);
+        $('.search-map-form').submit();
+      }else if(url_lat&&url_lng&&url_zoom){
+        map.setView([url_lat,url_lng],url_zoom);
+      }
+      map_listen();
+
+
+ }catch(e){
+        console.log(e);
+        is_error();
+
+      }
+
+      $('.load').hide('slow');
+    };
+
+    function break_line(text){
+      return text.replace(/\n/g,"<br>");
+    }
+
+    function add_tag(val,name , htmltag, classname){
+      name = (name == "")?"":name+ "：";
+      myclass = (typeof classname == "undefined")? "": " class="+classname;
+      return (val=="")?"":"<"+htmltag+myclass+">" + name + val + "</"+htmltag+">";
+    }
+
+    function map_listen(){
+      //Map Event
+      map.on('moveend',set_url)
+      .on('zoomend',set_url)
+      .on('popupopen',function(e){
+        cur_agoama=e.popup._source.id;
+        set_url();
+      })
+      .on('popupclose',function(e){
+        cur_agoama = -1;
+        set_url();
+      });
+
+    }
+
+    function set_url(){
+      cur_lat=map.getCenter().lat;
+        cur_lng=map.getCenter().lng;
+        cur_zoom=map.getZoom();
+        new_para='?lat='+cur_lat+'&lng='+cur_lng+'&zoom='+cur_zoom+((cur_agoama!=-1)?('&agoama='+cur_agoama):'')+'#map';
+        // $('.test').text('http://junsuwhy.github.io/whereisama/'+new_para);
+        history.pushState(null, null,pre_para+new_para);
+    }
+
+
+ function is_error(){
+ 
+    }
 </script>
       
       </div>
@@ -298,6 +387,7 @@
           
 
           </div>
+          <!-- <div class="test"></div> -->
 <div class="footer"><h2>其他專案</h2>
   <a target="_blank" onClick="ga('send', 'event', 'click', 'page', 'bottom');" href="https://www.facebook.com/Do.you.a.flavor"><img src="img/logo1.png" alt="" class="footer1"></a>
   <img src="img/logo2.png" alt="" class="footer2">

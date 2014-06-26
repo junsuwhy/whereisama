@@ -122,8 +122,8 @@
 
     try{
     //取得阿公阿嬤編號
-    url = location.href;
-    agoama = parseInt(url.match(/agoama=(\d+)/g)[0].split("=")[1]);
+    var url = location.href;
+    var agoama = parseInt(url.match(/agoama=(\d+)/g)[0].split("=")[1]);
 
     var redMarker = L.AwesomeMarkers.icon({
         icon: 'star',
