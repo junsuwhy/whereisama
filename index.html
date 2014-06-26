@@ -198,6 +198,7 @@
 
     $('.search-map-form').submit(function(){
       address = $('#search-map-text').val();
+      ga('send', 'event', 'map', 'search', address);
       if(address !== ""){
         $.ajax({
           url: 'https://maps.googleapis.com/maps/api/geocode/json',
@@ -352,13 +353,27 @@
 
     function map_listen(){
       //Map Event
-      map.on('moveend',set_url)
-      .on('zoomend',set_url)
+      map.on('moveend',function(e){
+        if(typeof ismoved!=="undefined"){
+          ga('send', 'event', 'map', 'move', 'move');
+          ismoved = true;
+        }
+        set_url();
+      })
+      .on('zoomend',function(e){
+        if(typeof iszoomed!=="undefined"){
+          ga('send', 'event', 'map', 'zoom', 'zoom');
+          iszoomed = true;
+        }
+        set_url();
+      })
       .on('popupopen',function(e){
         cur_agoama=e.popup._source.id;
+        ga('send', 'event', 'map', 'popupopen', cur_agoama);
         set_url();
       })
       .on('popupclose',function(e){
+        ga('send', 'event', 'map', 'popupclose', cur_agoama);
         cur_agoama = -1;
         set_url();
       });
@@ -371,7 +386,7 @@
         cur_zoom=map.getZoom();
         new_para='?lat='+cur_lat+'&lng='+cur_lng+'&zoom='+cur_zoom+((cur_agoama!=-1)?('&agoama='+cur_agoama):'')+'#map';
         // $('.test').text('http://junsuwhy.github.io/whereisama/'+new_para);
-        history.pushState(null, null,pre_para+new_para);
+        history.pushState(null, document.title,pre_para+new_para);
     }
 
 
