@@ -354,14 +354,14 @@
     function map_listen(){
       //Map Event
       map.on('moveend',function(e){
-        if(typeof ismoved!=="undefined"){
+        if(typeof ismoved=="undefined"){
           ga('send', 'event', 'map', 'move', 'move');
           ismoved = true;
         }
         set_url();
       })
       .on('zoomend',function(e){
-        if(typeof iszoomed!=="undefined"){
+        if(typeof iszoomed=="undefined"){
           ga('send', 'event', 'map', 'zoom', 'zoom');
           iszoomed = true;
         }
@@ -386,7 +386,7 @@
         cur_zoom=map.getZoom();
         new_para='?lat='+cur_lat+'&lng='+cur_lng+'&zoom='+cur_zoom+((cur_agoama!=-1)?('&agoama='+cur_agoama):'')+'#map';
         // $('.test').text('http://junsuwhy.github.io/whereisama/'+new_para);
-        history.pushState(null, document.title,pre_para+new_para);
+        history.replaceState(null, document.title,pre_para+new_para);
     }
 
 
