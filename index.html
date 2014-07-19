@@ -202,6 +202,9 @@
       address = $('#search-map-text').val();
       ga('send', 'event', 'map', 'search', address);
       if(address !== ""){
+        if(address == "doyouaflavor.tw"){
+          map.addLayer(layer);
+        }
         $.ajax({
           url: 'https://maps.googleapis.com/maps/api/geocode/json',
           //type: 'default GET (Other values: POST)',
@@ -241,7 +244,7 @@
       }
     })
 
-  //var layer = new L.StamenTileLayer("watercolor");
+  layer = new L.StamenTileLayer("watercolor");
   var map = L.map('map',{'scrollWheelZoom':false,}).setView([23.675,121.264], 7);
   mapLink =
     '<a href="http://openstreetmap.org">OpenStreetMap</a>';
@@ -250,7 +253,7 @@
       attribution: 'Map data &copy; ' + mapLink,
       maxZoom: 18,
     }).addTo(map);
-  //map.addLayer(layer);
+  
 
   Tabletop.init({
     key: '1r8geMv62QiLS3rZFVSjn_q-nt_tfOqIxFmJOUP_OiH0',
