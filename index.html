@@ -12,6 +12,7 @@
     <link href='https://docs.google.com/static/forms/client/css/212514800-mobile_formview_ltr.css' type='text/css' rel='stylesheet' media='screen and (max-device-width: 721px)'>
     <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
     <script src="js/leaflet.awesome-markers.min.js"></script>
+    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
       <script type="text/javascript">
       /**
       * @license
@@ -202,6 +203,9 @@
       address = $('#search-map-text').val();
       ga('send', 'event', 'map', 'search', address);
       if(address !== ""){
+        if(address == "doyouaflavor.tw"){
+          map.addLayer(layer);
+        }
         $.ajax({
           url: 'https://maps.googleapis.com/maps/api/geocode/json',
           //type: 'default GET (Other values: POST)',
@@ -241,7 +245,7 @@
       }
     })
 
-
+  layer = new L.StamenTileLayer("watercolor");
   var map = L.map('map',{'scrollWheelZoom':false,}).setView([23.675,121.264], 7);
   mapLink =
     '<a href="http://openstreetmap.org">OpenStreetMap</a>';
@@ -250,6 +254,7 @@
       attribution: 'Map data &copy; ' + mapLink,
       maxZoom: 18,
     }).addTo(map);
+  
 
   Tabletop.init({
     key: '1r8geMv62QiLS3rZFVSjn_q-nt_tfOqIxFmJOUP_OiH0',
