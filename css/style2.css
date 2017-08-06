@@ -1,0 +1,245 @@
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: "Helvetica Neue", Helvetica, Arial, "儷黑 Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif; 
+  text-align: left;
+  padding: 0;
+}
+a {
+  color: #70CCC4;
+}
+a:hover {
+  text-decoration: none;
+}
+.hide,.required-message{
+  display:none;
+}
+.background-div{
+  background: url(../img/amabg.jpg) no-repeat 100% 45px;
+  width: 960px;
+  height: 368px;
+  position: fixed;
+  z-index: -99;
+  background-size: 368px;
+  margin: 0 auto;
+}
+.all-container{
+  /*background: url(../img/amabg.jpg) no-repeat 100% 0;*/
+  width:960px;
+  margin:0 auto;
+}
+.ss-form-container {
+  border: 0;
+  float: left;
+  width:670px;
+  padding:0 45px;
+  /*margin: 0 auto;*/
+}
+.ss-header-image{
+  background: url(../img/ama-logo-background.jpg) no-repeat;
+  width:200px;
+  height:740px;
+  float:left;
+  position: relative;
+}
+.ss-header-image iframe{
+  border:none; 
+  overflow:hidden; 
+  width:200px; 
+  height:80px;
+  position: absolute;
+  bottom: 0;
+}
+.ss-form-desc {
+  margin-top: 80px;
+  font-size: 12pt;
+  width:320px;
+  border-top: 8px #000 solid;
+  padding-top:18px;
+}
+.ss-form-title {
+  display:none;
+}
+
+.ss-q-title {
+  font-size: 16pt;
+  font-weight: normal;
+  margin-bottom: 2px;
+  padding-top: 3px;
+  color: #000000;
+}
+.ss-q-help {
+  font-size: 9pt;
+  margin-bottom: 10px;
+}
+.ss-form-entry{
+  /*width: 300px;*/
+  float: left;
+  padding-right: 20px;
+  padding-top:10px;
+}
+.max-width{
+  width:315px;
+}
+.clear-both{
+  clear:both;
+}
+
+.ss-form-entry input, 
+.ss-form-entry textarea, 
+.ss-form-entry select,
+.search-map-div .ss-q-short,
+.search-map-div #search-map-submit{
+  border: 1px solid #000;
+  background: rgba(1,1,1,0);
+}
+.ss-form-entry input {
+  padding: 2px 4px;
+}
+.ss-form-entry textarea {
+  width: 100%;
+  margin-bottom: 0;
+}
+.ss-form-entry li{
+  float:left;
+  list-style: none;
+}
+.ss-choices{
+  margin-left: -40px;
+}
+
+.width-all .ss-form-entry{
+  width:100%;
+}
+
+.ss-required-asterisk {
+  font-size: 8pt;
+  color: #555555;
+}
+.ss-q-title .ss-required-asterisk {
+  font-size: 16pt;
+  padding: 0;
+}
+
+.ss-powered-by {
+  padding-top: 15px;
+  font-size: 8pt;
+  color: #aaaaaa;
+  border-top: 1px solid #cccccc;
+}
+.ss-scalerow {
+  padding: 2px 2px 2px 0;
+  margin: 0;
+}
+div.errorbox-bad .ss-q-title {
+  border: none;
+}
+h2.ss-section-title {
+  background-color: transparent;
+}
+div.ss-submit div.ss-form-entry {
+  background: none;
+  border: none;
+}
+#ss-submit,
+.search-map-div #search-map-submit{
+  background: #fff;
+  /*border:1px #fff solid;*/
+}
+#navigation-table{
+  clear:both;
+}
+#ss-submit:hover{
+  
+}
+
+iframe.map{
+  width:960px;
+  height:600px;
+  margin:0 auto;
+  border: none;
+}
+
+/**
+ * 大地圖
+ */
+#map{
+  clear:both;
+  height:500px;
+  margin-bottom: 50px
+}
+.load{
+  position: absolute;
+  z-index: 900;
+  left: 50%;
+  top: 50%;
+}
+.load img{
+  margin-left: -20px;
+  margin-top: -20px;
+}
+/**
+ * 搜尋
+ */
+.search-map-wrapper{
+  position: relative;
+}
+.search-map-div{
+  position: absolute;
+  top: -540px;
+  left: 50px;
+}
+#search-map-text{
+  background-color: #fff;
+  width:200px;
+}
+
+/**
+ * 地圖內泡泡
+ */
+.other{
+  color:#444;
+}
+
+
+.footer{
+  font-family: 'ヒラギノ明朝 Pro W3','Hiragino Mincho Pro','HiraMinProN-W3','ＭＳ 明朝','MS Mincho',serif;
+  text-align: center;
+  color:#fff;
+  background-color: #000;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding-bottom: 20px;
+}
+.footer-content>div{
+  display: inline-block;
+  margin: 0 5px;
+}
+div.footer-logo1 {
+  margin-left: 30px;
+}
+.footer-logo1 img {
+  width:120px;
+}
+.footer-cross img {
+  width:50px;
+  height:50px;
+  margin-bottom: 25px;
+}
+.stonesoup-mark {
+  text-align: left;
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, "儷黑 Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 50px;
+}
+.stonesoup-mark a{
+  color: white;
+  text-decoration: none;
+  font-size: 35px;
+}
+.ewca-mark img{
+  width: 150px;
+}
