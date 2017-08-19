@@ -26,6 +26,10 @@ a {
 a:hover {
   text-decoration: none;
 }
+li {
+  float: left;
+  margin-right: 40px;
+}
 .hide,.required-message{
   display:none;
 }

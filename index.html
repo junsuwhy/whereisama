@@ -7,11 +7,11 @@
   <title>大家一起把回收拿給阿公阿嬤</title>
   <link href='css/style2.css' type='text/css' rel='stylesheet'>
   <link href='css/colorbox.css' type='text/css' rel='stylesheet'>
-  <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+  <link rel="stylesheet" href="//unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
   <link href='css/Leaflet.awesome-markers.css' type='text/css' rel='stylesheet'>
 
     <link href='https://docs.google.com/static/forms/client/css/212514800-mobile_formview_ltr.css' type='text/css' rel='stylesheet' media='screen and (max-device-width: 721px)'>
-    <script src="//cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+    <script src="//unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
     <script src="js/leaflet.awesome-markers.min.js"></script>
     <script type="text/javascript" src="js/tile.stamen.js"></script>
       <script type="text/javascript" src="js/h5f.js">
@@ -81,24 +81,23 @@
      您的一個小動作，我們來替您提供關懷！<br>
      </p>
     <p>
-        幫我們<a class="iframe register-agoama" href="javascript:void(0)">把他們的資料填入問卷</a><br>
+        幫我們<a class="inline register-agoama" href="#gform-agoama">把他們的資料填入問卷</a><br>
      我們將前往訪查，並用這個資料，建立一個回收點地圖<br>
      讓大家都可以把家裡的回收附近有在收回收的阿公阿嬤
      </p>
      </div>
       <div class="menu">
           <ul>
-              <li><a class="iframe register-agoama" href="javascript:void(0)">登記阿公阿嬤</a></li>
-              
+              <li><a class="inline" href="#gform-agoama">登記阿公阿嬤</a></li>
+              <li><a class="inline" href="#gform-place">登記回收站 </a> </li>
               
           </ul>
           <script>
 $(function(){
-    $('.iframe.register-agoama').colorbox({
-        ifream: true,
+    $('.inline').colorbox({
+        inline: true,
         width: "90%",
         height: "90%",
-        href: "http://docs.google.com/forms/d/e/1FAIpQLSeIViJYO6ComCrMglxwLMK8p4qCF5JJrU-vl8-Np5aiN5K4nw/viewform?embedded=true",
     });
 })
           </script>
@@ -347,5 +346,11 @@ $(function(){
 
 
 </div>
+</div>
+
+
+<div class="hide">
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeIViJYO6ComCrMglxwLMK8p4qCF5JJrU-vl8-Np5aiN5K4nw/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" id="gform-agoama">載入中…</iframe>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeufB5ELJDx0go6_UBsfn8E--C5qyRfHRyLjoaTZfddggdXwQ/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" id="gform-place">載入中…</iframe>
 </div>
         </body></html>
