@@ -4,6 +4,21 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, "儷黑 Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif; 
   text-align: left;
   padding: 0;
+  margin: 0;
+}
+.header{
+    display: table;
+    margin: 0 20px
+}
+.info-wrapper.menu-wrapper{
+    margin: 0 20px;
+}
+h1{
+    display: table-cell;
+/*    font-size: 50px;*/
+    vertical-align: middle;
+/*    line-height: 190px;*/
+    overflow: hidden;
 }
 a {
   color: #70CCC4;
@@ -15,9 +30,9 @@ a:hover {
   display:none;
 }
 .background-div{
-  background: url(../img/amabg.jpg) no-repeat 100% 45px;
+  background: url(../img/amabg.jpg) no-repeat 0 100%;
   width: 960px;
-  height: 368px;
+  height: 500px;
   position: fixed;
   z-index: -99;
   background-size: 368px;
@@ -25,7 +40,7 @@ a:hover {
 }
 .all-container{
   /*background: url(../img/amabg.jpg) no-repeat 100% 0;*/
-  width:960px;
+/*  width:960px;*/
   margin:0 auto;
 }
 .ss-form-container {
