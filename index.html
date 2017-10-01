@@ -8,11 +8,14 @@
   <link href='css/style2.css' type='text/css' rel='stylesheet'>
   <link href='css/colorbox.css' type='text/css' rel='stylesheet'>
   <link rel="stylesheet" href="//unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+  <script src="https://use.fontawesome.com/545b41d0aa.js"></script>
   <link href='css/Leaflet.awesome-markers.css' type='text/css' rel='stylesheet'>
+  
 
     <link href='https://docs.google.com/static/forms/client/css/212514800-mobile_formview_ltr.css' type='text/css' rel='stylesheet' media='screen and (max-device-width: 721px)'>
     <script src="//unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
-    <script src="js/leaflet.awesome-markers.min.js"></script>
+    <script src="js/leaflet.awesome-markers.js"></script>
     <script type="text/javascript" src="js/tile.stamen.js"></script>
       <script type="text/javascript" src="js/h5f.js">
       </script>
@@ -175,10 +178,11 @@ $(function(){
   mapLink =
     '<a href="http://openstreetmap.org">OpenStreetMap</a>';
   L.tileLayer(
-    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; ' + mapLink,
       maxZoom: 18,
     }).addTo(map);
+
     
   init();
   
@@ -232,10 +236,22 @@ $(function(){
     url_lng = url.match(/lng=[^&#]*/g)?parseFloat(url.match(/lng=[^&#]*/g)[0].split("=")[1]):null;
     url_zoom = url.match(/zoom=[^&#]*/g)?parseInt(url.match(/zoom=[^&#]*/g)[0].split("=")[1]):null;
     
-
-    redMarker = L.AwesomeMarkers.icon({
-      icon: 'star',
-      markerColor: 'yellow'
+    // refs : https://github.com/pointhi/leaflet-color-markers
+    greyIcon = new L.Icon({
+      iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    redIcon = new L.Icon({
+      iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
     });
     
     arr_markers=[];
@@ -294,7 +310,8 @@ $(function(){
       // var link_node ="";
       var link_node = add_tag('<a target="_self" href="./node.html?agoama='+index+'">補充資訊</a>','',"div");
       var text = name +address + point + start + end + other+link_node;
-      arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']]).addTo(map).bindPopup(text);
+      
+      arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']], {icon: greyIcon}).addTo(map).bindPopup(text);
       arr_markers[index].id = index;
       // if(cur_agoama == index){
       //   arr_markers[index].openPopup();
@@ -331,7 +348,8 @@ $(function(){
       var text = name + new_tag + address;
   
       index = agoama['資料編號'];
-      arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']],{icon:redMarker}).addTo(map).bindPopup(text);
+
+      arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']],{icon:redIcon}).addTo(map).bindPopup(text);
       arr_markers[index].id = index;
       // if(cur_agoama == index){
       //   arr_markers[index].openPopup();
@@ -384,7 +402,6 @@ $(function(){
       
       //處理初始畫面
       if(url_agoama){
-        console.log(arr_markers);
         arr_markers[url_agoama].openPopup();
       }
 
