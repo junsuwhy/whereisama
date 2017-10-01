@@ -179,99 +179,100 @@ $(function(){
       attribution: 'Map data &copy; ' + mapLink,
       maxZoom: 18,
     }).addTo(map);
-  
+    
+  init();
 
   Tabletop.init({
     key: '1r8geMv62QiLS3rZFVSjn_q-nt_tfOqIxFmJOUP_OiH0',
-    callback: afterLoadSheet,
+    callback: afterLoadSheet(),
     simpleSheet: false
   });
-
   
-  function afterLoadSheet(data, tabletop) {
+  doPostProcess();
+  
+  // Tabletop.init({
+  //   key: '18XvyINF-fOP0TIILfbI-PTQGtn1xKHydsMQT3lbnnwE',
+  //   callback: afterLoadSheet,
+  //   simpleSheet: false
+  // });
 
-    try{
+
+  function init(){
     //取得阿公阿嬤編號
-    
-    var url = location.href;
-    var url_agoama = url.match(/agoama=[^&#]*/g)?parseInt(url.match(/agoama=[^&#]*/g)[0].split("=")[1]):null;
+      
+    url = location.href;
+    url_agoama = url.match(/agoama=[^&#]*/g)?parseInt(url.match(/agoama=[^&#]*/g)[0].split("=")[1]):null;
     if(url_agoama){
       cur_agoama = url_agoama;
     }
-    var url_address = url.match(/address=([^&#]*)/g)?decodeURI(url.match(/address=[^&#]*/g)[0].split("=")[1]):null;
-    var url_lat = url.match(/lat=[^&#]*/g)?parseFloat(url.match(/lat=[^&#]*/g)[0].split("=")[1]):null;
-    var url_lng = url.match(/lng=[^&#]*/g)?parseFloat(url.match(/lng=[^&#]*/g)[0].split("=")[1]):null;
-    var url_zoom = url.match(/zoom=[^&#]*/g)?parseInt(url.match(/zoom=[^&#]*/g)[0].split("=")[1]):null;
+    url_address = url.match(/address=([^&#]*)/g)?decodeURI(url.match(/address=[^&#]*/g)[0].split("=")[1]):null;
+    url_lat = url.match(/lat=[^&#]*/g)?parseFloat(url.match(/lat=[^&#]*/g)[0].split("=")[1]):null;
+    url_lng = url.match(/lng=[^&#]*/g)?parseFloat(url.match(/lng=[^&#]*/g)[0].split("=")[1]):null;
+    url_zoom = url.match(/zoom=[^&#]*/g)?parseInt(url.match(/zoom=[^&#]*/g)[0].split("=")[1]):null;
     
 
-    var redMarker = L.AwesomeMarkers.icon({
-        icon: 'star',
-        markerColor: 'yellow'
-      });
+    redMarker = L.AwesomeMarkers.icon({
+      icon: 'star',
+      markerColor: 'yellow'
+    });
+    
+    arr_markers=[];
 
-
-
-
-    // console.log(data);
-    agoma_array = data.sheet1.elements;
-    var arr_markers=[];
-
-    for (var i = 0; i < agoma_array.length; i++) {
-      /*
-          回收時間-結束: "17:00"
-          回收時間-開始: "09:00"
-          回收項目: ""
-          地址: "台灣台中市北區興進路218巷"
-          性別: "女"
-          意見回饋: ""
-          時間戳記: "2014/5/10 下午 11:42:23"
-          稱呼: "婆婆"
-          經度: "120.6921969"
-          緯度: "24.156139"
-          附近地標: "湖南味小吃"
-       */
-      if(!isNaN(parseFloat(agoma_array[i]['緯度'])) && !isNaN(parseFloat(agoma_array[i]['經度']))){
-        var name = add_tag(agoma_array[i]['稱呼'],"","h3");
-        var address = add_tag(agoma_array[i]['地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoma_array[i]['地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
-        var point = add_tag(agoma_array[i]['附近地標'],'附近地標',"div");
-        var start = add_tag(agoma_array[i]['回收時間-開始'],'開始回收時間',"div");
-        var end = add_tag(agoma_array[i]['回收時間-結束'],'結束回收時間',"div");
-        var other = add_tag(break_line(agoma_array[i]['意見回饋']),'',"div","other");
-        // var link_node ="";
-        var link_node = add_tag('<a target="_self" href="./node.html?agoama='+i+'">補充資訊</a>','',"div");
-        var text = name +address + point + start + end + other+link_node;
-
-        arr_markers[i] = L.marker([agoma_array[i]['緯度'], agoma_array[i]['經度']]).addTo(map)
-        .bindPopup(text);
-        arr_markers[i].id=i;
-
-        }
+  }
+  
+  
+  function afterLoadSheet(options) {
+    return function(data, tabletop){
+      try{
+  
+      // console.log(data);
+      agoama_array = data.sheet1.elements;
+  
+      for (var i = 0; i < agoama_array.length; i++) {
+        addAgoamaOld(agoama_array[i],i);
       }
-
-      //處理完阿公阿嬤的點了
-      
-      //處理初始畫面
-      if(url_agoama){
-        arr_markers[url_agoama].openPopup();
-      }
-
-      if(url_address){
-        $('#search-map-text').val(url_address);
-        $('.search-map-form').submit();
-      }else if(url_lat&&url_lng&&url_zoom){
-        map.setView([url_lat,url_lng],url_zoom);
-      }
-      map_listen();
-
-
- }catch(e){
+    }catch(e){
         console.log(e);
         is_error();
 
       }
 
       $('.load').hide('slow');
-    };
+      
+    }
+    
+  }
+  
+  function addAgoamaOld(agoama,index){
+    /*
+      回收時間-結束: "17:00"
+      回收時間-開始: "09:00"
+      回收項目: ""
+      地址: "台灣台中市北區興進路218巷"
+      性別: "女"
+      意見回饋: ""
+      時間戳記: "2014/5/10 下午 11:42:23"
+      稱呼: "婆婆"
+      經度: "120.6921969"
+      緯度: "24.156139"
+      附近地標: "湖南味小吃"
+    */
+    if(!isNaN(parseFloat(agoama['緯度'])) && !isNaN(parseFloat(agoama['經度']))){
+      var name = add_tag(agoama['稱呼'],"","h3");
+      var address = add_tag(agoama['地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoama['地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
+      var point = add_tag(agoama['附近地標'],'附近地標',"div");
+      var start = add_tag(agoama['回收時間-開始'],'開始回收時間',"div");
+      var end = add_tag(agoama['回收時間-結束'],'結束回收時間',"div");
+      var other = add_tag(break_line(agoama['意見回饋']),'',"div","other");
+      // var link_node ="";
+      var link_node = add_tag('<a target="_self" href="./node.html?agoama='+index+'">補充資訊</a>','',"div");
+      var text = name +address + point + start + end + other+link_node;
+  
+      arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']]).addTo(map).bindPopup(text);
+      arr_markers[index].id = index;
+  
+    }
+  }
 
     function break_line(text){
       return text.replace(/\n/g,"<br>");
@@ -310,6 +311,23 @@ $(function(){
         set_url();
       });
 
+    }
+    
+    function doPostProcess(){
+      //處理完阿公阿嬤的點了
+      
+      //處理初始畫面
+      if(url_agoama){
+        arr_markers[url_agoama].openPopup();
+      }
+
+      if(url_address){
+        $('#search-map-text').val(url_address);
+        $('.search-map-form').submit();
+      }else if(url_lat&&url_lng&&url_zoom){
+        map.setView([url_lat,url_lng],url_zoom);
+      }
+      map_listen();
     }
 
     function set_url(){
