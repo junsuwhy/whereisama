@@ -181,28 +181,40 @@ $(function(){
     }).addTo(map);
     
   init();
-
-  var oldOptions = {
-    'func' :addAgoamaOld,
-    'sheetName' : 'sheet1',
-  }
-  Tabletop.init({
-    key: '1r8geMv62QiLS3rZFVSjn_q-nt_tfOqIxFmJOUP_OiH0',
-    callback: afterLoadSheet(oldOptions),
-    simpleSheet: false
+  
+  verify_pr = [];
+  pr1 = new Promise(function(resolve, reject){
+    var oldOptions = {
+      'order' : 0,
+      'func' :addAgoamaOld,
+      'sheetName' : 'sheet1',
+    }
+    verify_pr[oldOptions.order] = 0;
+    Tabletop.init({
+      key: '1r8geMv62QiLS3rZFVSjn_q-nt_tfOqIxFmJOUP_OiH0',
+      callback: afterLoadSheet(oldOptions),
+      simpleSheet: false
+    });
+    
+    var newOptions = {
+      'order' : 1,
+      'func' :addAgoamaNew,
+      'sheetName' : 'people',
+    }
+    verify_pr[newOptions.order] = 0;
+    Tabletop.init({
+      key: '18XvyINF-fOP0TIILfbI-PTQGtn1xKHydsMQT3lbnnwE',
+      callback: afterLoadSheet(newOptions),
+      simpleSheet: false
+    });
+    
+    global_resolve = resolve;
+    
   });
   
-  var newOptions = {
-    'func' :addAgoamaNew,
-    'sheetName' : 'people',
-  }
-  Tabletop.init({
-    key: '18XvyINF-fOP0TIILfbI-PTQGtn1xKHydsMQT3lbnnwE',
-    callback: afterLoadSheet(newOptions),
-    simpleSheet: false
-  });
-  
-  doPostProcess();
+  pr1.then(function(){
+    doPostProcess();
+  })
   
   
 
@@ -211,7 +223,7 @@ $(function(){
     //取得阿公阿嬤編號
       
     url = location.href;
-    url_agoama = url.match(/agoama=[^&#]*/g)?parseInt(url.match(/agoama=[^&#]*/g)[0].split("=")[1]):null;
+    url_agoama = url.match(/agoama=[^&#]*/g)?url.match(/agoama=[^&#]*/g)[0].split("=")[1]:null;
     if(url_agoama){
       cur_agoama = url_agoama;
     }
@@ -235,11 +247,16 @@ $(function(){
     return function(data, tabletop){
       try{
   
-      console.log(data);
       agoama_array = data[options.sheetName].elements;
   
       for (var i = 0; i < agoama_array.length; i++) {
         options.func(agoama_array[i],i);
+        if(i == agoama_array.length - 1){
+          verify_pr[options.order] = 1;
+          if(verify_pr.reduce((a, b) => a + b, 0) == verify_pr.length){
+            global_resolve();
+          }
+        }
       }
     }catch(e){
         console.log(e);
@@ -279,6 +296,9 @@ $(function(){
       var text = name +address + point + start + end + other+link_node;
       arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']]).addTo(map).bindPopup(text);
       arr_markers[index].id = index;
+      // if(cur_agoama == index){
+      //   arr_markers[index].openPopup();
+      // }
   
     }
   }
@@ -310,8 +330,12 @@ $(function(){
       // var text = name +address + point + start + end + other+link_node;
       var text = name + new_tag + address;
   
+      index = agoama['資料編號'];
       arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']],{icon:redMarker}).addTo(map).bindPopup(text);
       arr_markers[index].id = index;
+      // if(cur_agoama == index){
+      //   arr_markers[index].openPopup();
+      // }
   
     }
   }
@@ -360,6 +384,7 @@ $(function(){
       
       //處理初始畫面
       if(url_agoama){
+        console.log(arr_markers);
         arr_markers[url_agoama].openPopup();
       }
 
