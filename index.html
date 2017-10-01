@@ -182,19 +182,29 @@ $(function(){
     
   init();
 
+  var oldOptions = {
+    'func' :addAgoamaOld,
+    'sheetName' : 'sheet1',
+  }
   Tabletop.init({
     key: '1r8geMv62QiLS3rZFVSjn_q-nt_tfOqIxFmJOUP_OiH0',
-    callback: afterLoadSheet(),
+    callback: afterLoadSheet(oldOptions),
+    simpleSheet: false
+  });
+  
+  var newOptions = {
+    'func' :addAgoamaNew,
+    'sheetName' : 'people',
+  }
+  Tabletop.init({
+    key: '18XvyINF-fOP0TIILfbI-PTQGtn1xKHydsMQT3lbnnwE',
+    callback: afterLoadSheet(newOptions),
     simpleSheet: false
   });
   
   doPostProcess();
   
-  // Tabletop.init({
-  //   key: '18XvyINF-fOP0TIILfbI-PTQGtn1xKHydsMQT3lbnnwE',
-  //   callback: afterLoadSheet,
-  //   simpleSheet: false
-  // });
+  
 
 
   function init(){
@@ -225,11 +235,11 @@ $(function(){
     return function(data, tabletop){
       try{
   
-      // console.log(data);
-      agoama_array = data.sheet1.elements;
+      console.log(data);
+      agoama_array = data[options.sheetName].elements;
   
       for (var i = 0; i < agoama_array.length; i++) {
-        addAgoamaOld(agoama_array[i],i);
+        options.func(agoama_array[i],i);
       }
     }catch(e){
         console.log(e);
@@ -267,8 +277,40 @@ $(function(){
       // var link_node ="";
       var link_node = add_tag('<a target="_self" href="./node.html?agoama='+index+'">補充資訊</a>','',"div");
       var text = name +address + point + start + end + other+link_node;
-  
       arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']]).addTo(map).bindPopup(text);
+      arr_markers[index].id = index;
+  
+    }
+  }
+  
+   function addAgoamaNew(agoama,index){
+    /*
+      回收時間-結束: "17:00"
+      回收時間-開始: "09:00"
+      回收項目: ""
+      地址: "台灣台中市北區興進路218巷"
+      性別: "女"
+      意見回饋: ""
+      時間戳記: "2014/5/10 下午 11:42:23"
+      稱呼: "婆婆"
+      經度: "120.6921969"
+      緯度: "24.156139"
+      附近地標: "湖南味小吃"
+    */
+    if(!isNaN(parseFloat(agoama['緯度'])) && !isNaN(parseFloat(agoama['經度']))){
+      var name = add_tag(agoama['長輩姓氏']+agoama['長輩性別'],"","h3");
+      var new_tag = add_tag("老人福利關懷協會個案","","h4");
+      var address = add_tag(agoama['長輩地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoama['長輩地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
+      // var point = add_tag(agoama['附近地標'],'附近地標',"div");
+      // var start = add_tag(agoama['回收時間-開始'],'開始回收時間',"div");
+      // var end = add_tag(agoama['回收時間-結束'],'結束回收時間',"div");
+      // var other = add_tag(break_line(agoama['意見回饋']),'',"div","other");
+      // var link_node ="";
+      // var link_node = add_tag('<a target="_self" href="./node.html?agoama='+index+'">補充資訊</a>','',"div");
+      // var text = name +address + point + start + end + other+link_node;
+      var text = name + new_tag + address;
+  
+      arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']],{icon:redMarker}).addTo(map).bindPopup(text);
       arr_markers[index].id = index;
   
     }
