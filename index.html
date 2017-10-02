@@ -189,11 +189,10 @@ $(function(){
   verify_pr = [];
   pr1 = new Promise(function(resolve, reject){
     var oldOptions = {
-      'order' : 0,
       'func' :addAgoamaOld,
       'sheetName' : 'sheet1',
     }
-    verify_pr[oldOptions.order] = 0;
+    verify_pr['sheet1'] = 0;
     Tabletop.init({
       key: '1r8geMv62QiLS3rZFVSjn_q-nt_tfOqIxFmJOUP_OiH0',
       callback: afterLoadSheet(oldOptions),
@@ -203,9 +202,10 @@ $(function(){
     var newOptions = {
       'order' : 1,
       'func' :addAgoamaNew,
-      'sheetName' : 'people',
+      'sheetName' : ['people','station'],
     }
-    verify_pr[newOptions.order] = 0;
+    verify_pr['people'] = 0;
+    verify_pr['station'] = 0;
     Tabletop.init({
       key: '18XvyINF-fOP0TIILfbI-PTQGtn1xKHydsMQT3lbnnwE',
       callback: afterLoadSheet(newOptions),
@@ -262,19 +262,33 @@ $(function(){
   function afterLoadSheet(options) {
     return function(data, tabletop){
       try{
-  
-      agoama_array = data[options.sheetName].elements;
-  
-      for (var i = 0; i < agoama_array.length; i++) {
-        options.func(agoama_array[i],i);
-        if(i == agoama_array.length - 1){
-          verify_pr[options.order] = 1;
-          if(verify_pr.reduce((a, b) => a + b, 0) == verify_pr.length){
-            global_resolve();
-          }
+        if(!Array.isArray(options.sheetName)){
+          options.sheetName = [options.sheetName];
         }
-      }
-    }catch(e){
+  
+        options.sheetName.forEach(function(sheetName){
+          agoama_array = data[sheetName].elements;
+  
+          for (var i = 0; i < agoama_array.length; i++) {
+            options.func(agoama_array[i],i);
+            if(i == agoama_array.length - 1){
+              verify_pr[sheetName] = 1;
+              var sum = 0;
+              var count = 0;
+              Object.keys(verify_pr).map(function(key){
+                sum += verify_pr[key];
+                count += 1;
+              });
+              if(sum == count){
+                global_resolve();
+              }
+            }
+          }
+          
+        });
+  
+      
+      }catch(e){
         console.log(e);
         is_error();
 
@@ -335,25 +349,45 @@ $(function(){
       附近地標: "湖南味小吃"
     */
     if(!isNaN(parseFloat(agoama['緯度'])) && !isNaN(parseFloat(agoama['經度']))){
-      var name = add_tag(agoama['長輩姓氏']+agoama['長輩性別'],"","h3");
-      var new_tag = add_tag("老人福利關懷協會個案","","h4");
-      var address = add_tag(agoama['長輩地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoama['長輩地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
-      // var point = add_tag(agoama['附近地標'],'附近地標',"div");
-      // var start = add_tag(agoama['回收時間-開始'],'開始回收時間',"div");
-      // var end = add_tag(agoama['回收時間-結束'],'結束回收時間',"div");
-      // var other = add_tag(break_line(agoama['意見回饋']),'',"div","other");
-      // var link_node ="";
-      // var link_node = add_tag('<a target="_self" href="./node.html?agoama='+index+'">補充資訊</a>','',"div");
-      // var text = name +address + point + start + end + other+link_node;
-      var text = name + new_tag + address;
+      if(agoama['資料編號'].match('agoama')){
+        var name = add_tag(agoama['長輩姓氏']+agoama['長輩性別'],"","h3");
+        var new_tag = add_tag("老人福利關懷協會個案","","h4");
+        var address = add_tag(agoama['長輩地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoama['長輩地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
+        // var point = add_tag(agoama['附近地標'],'附近地標',"div");
+        // var start = add_tag(agoama['回收時間-開始'],'開始回收時間',"div");
+        // var end = add_tag(agoama['回收時間-結束'],'結束回收時間',"div");
+        // var other = add_tag(break_line(agoama['意見回饋']),'',"div","other");
+        // var link_node ="";
+        // var link_node = add_tag('<a target="_self" href="./node.html?agoama='+index+'">補充資訊</a>','',"div");
+        // var text = name +address + point + start + econd + other+link_node;
+        var text = name + new_tag + address;
+    
+        index = agoama['資料編號'];
   
-      index = agoama['資料編號'];
-
-      arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']],{icon:redIcon}).addTo(map).bindPopup(text);
-      arr_markers[index].id = index;
-      // if(cur_agoama == index){
-      //   arr_markers[index].openPopup();
-      // }
+        arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']],{icon:redIcon}).addTo(map).bindPopup(text);
+        arr_markers[index].id = index;
+        
+      }
+      
+      else if(agoama['資料編號'].match('station')){
+        var name = add_tag(agoama['地址'],"","h3");
+        var new_tag = add_tag("老人福利關懷協會合作回收點","","h4");
+        var address = add_tag(agoama['地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoama['地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
+        // var point = add_tag(agoama['附近地標'],'附近地標',"div");
+        // var start = add_tag(agoama['回收時間-開始'],'開始回收時間',"div");
+        // var end = add_tag(agoama['回收時間-結束'],'結束回收時間',"div");
+        // var other = add_tag(break_line(agoama['意見回饋']),'',"div","other");
+        // var link_node ="";
+        // var link_node = add_tag('<a target="_self" href="./node.html?agoama='+index+'">補充資訊</a>','',"div");
+        // var text = name +address + point + start + end + other+link_node;
+        var text = name + new_tag + address;
+    
+        index = agoama['資料編號'];
+  
+        arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']]).addTo(map).bindPopup(text);
+        arr_markers[index].id = index;
+        
+      }
   
     }
   }
