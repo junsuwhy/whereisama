@@ -16,7 +16,7 @@
 
     L.AwesomeMarkers = {};
 
-    L.AwesomeMarkers.version = '2.0.1';
+    L.AwesomeMarkers.version = '1.0';
 
     L.AwesomeMarkers.Icon = L.Icon.extend({
         options: {
@@ -28,7 +28,6 @@
             className: 'awesome-marker',
             prefix: 'glyphicon',
             spinClass: 'fa-spin',
-            extraClasses: '',
             icon: 'home',
             markerColor: 'blue',
             iconColor: 'white'
@@ -76,7 +75,7 @@
                 }
             }
 
-            return "<i " + iconColorStyle + "class='" + options.extraClasses + " " + options.prefix + " " + iconClass + " " + iconSpinClass + " " + iconColorClass + "'></i>";
+            return "<i " + iconColorStyle + "class='" + options.prefix + " " + iconClass + " " + iconSpinClass + " " + iconColorClass + "'></i>";
         },
 
         _setIconStyles: function (img, name) {
