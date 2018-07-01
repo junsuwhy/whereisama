@@ -85,20 +85,14 @@
      </p>
     <p>
         幫我們<a class="inline register-agoama" href="#gform-agoama">把他們的資料填入問卷</a><br>
-     我們將前往訪查，並用這個資料，建立一個回收點地圖<br>
+     我們將用這個資料，建立一個回收點地圖<br>
      讓大家都可以把家裡的回收附近有在收回收的阿公阿嬤
      </p>
      
-    <p>
-        另外，如果你家可以成為寄放回收物的中繼場所，<br>讓阿公阿嬤定時到你家拿取大家存放在此的回收物。<br>也請<a class="inline register-agoama" href="#gform-agoama">提供給我們</a><br>
-     我們也將前往訪查，並配對附近有在回收的阿公阿嬤
-     </p>
      </div>
       <div class="menu">
           <ul>
               <li><a class="inline" href="#gform-agoama">登記阿公阿嬤</a></li>
-              <li><a class="inline" href="#gform-place">登記回收站 </a> </li>
-              
           </ul>
           <script>
 $(function(){
@@ -190,7 +184,7 @@ $(function(){
   pr1 = new Promise(function(resolve, reject){
     var oldOptions = {
       'func' :addAgoamaOld,
-      'sheetName' : 'sheet1',
+      'sheetName' : ['sheet1']
     }
     verify_pr['sheet1'] = 0;
     Tabletop.init({
@@ -202,10 +196,9 @@ $(function(){
     var newOptions = {
       'order' : 1,
       'func' :addAgoamaNew,
-      'sheetName' : ['people','station'],
+      'sheetName' : ['people'],
     }
     verify_pr['people'] = 0;
-    verify_pr['station'] = 0;
     Tabletop.init({
       key: '18XvyINF-fOP0TIILfbI-PTQGtn1xKHydsMQT3lbnnwE',
       callback: afterLoadSheet(newOptions),
@@ -240,10 +233,10 @@ $(function(){
     greyIcon = new L.Icon({
       iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
+      iconSize: [13, 20],
+      iconAnchor: [7, 30],
       popupAnchor: [1, -34],
-      shadowSize: [41, 41]
+      shadowSize: [20, 20]
     });
     redIcon = new L.Icon({
       iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
@@ -267,22 +260,22 @@ $(function(){
         }
   
         options.sheetName.forEach(function(sheetName){
+          console.log(sheetName);
+          console.log(data);
           agoama_array = data[sheetName].elements;
-  
-          for (var i = 0; i < agoama_array.length; i++) {
-            options.func(agoama_array[i],i);
-            if(i == agoama_array.length - 1){
-              verify_pr[sheetName] = 1;
-              var sum = 0;
-              var count = 0;
-              Object.keys(verify_pr).map(function(key){
-                sum += verify_pr[key];
-                count += 1;
-              });
-              if(sum == count){
-                global_resolve();
-              }
-            }
+          agoama_array.forEach(function(agoama, i){
+            agoama.sheetName = sheetName;
+            options.func(agoama,i);
+          });
+          verify_pr[sheetName] = 1;
+          var sum = 0;
+          var count = 0;
+          Object.keys(verify_pr).map(function(key){
+            sum += verify_pr[key];
+            count += 1;
+          });
+          if(sum == count){
+            global_resolve();
           }
           
         });
@@ -323,7 +316,9 @@ $(function(){
       var other = add_tag(break_line(agoama['意見回饋']),'',"div","other");
       // var link_node ="";
       var link_node = add_tag('<a target="_self" href="./node.html?agoama='+index+'">補充資訊</a>','',"div");
-      var text = name +address + point + start + end + other+link_node;
+      var date = /(^\d{4}\/\d{1,2}\/\d{1,2})/.exec(agoama['時間戳記'])[0];
+      var submit_date = add_tag(date, '登記日期', "div");
+      var text = name +address + point + start + end + other + submit_date + link_node;
       
       arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']], {icon: greyIcon}).addTo(map).bindPopup(text);
       arr_markers[index].id = index;
@@ -335,59 +330,18 @@ $(function(){
   }
   
    function addAgoamaNew(agoama,index){
-    /*
-      回收時間-結束: "17:00"
-      回收時間-開始: "09:00"
-      回收項目: ""
-      地址: "台灣台中市北區興進路218巷"
-      性別: "女"
-      意見回饋: ""
-      時間戳記: "2014/5/10 下午 11:42:23"
-      稱呼: "婆婆"
-      經度: "120.6921969"
-      緯度: "24.156139"
-      附近地標: "湖南味小吃"
-    */
-    if(!isNaN(parseFloat(agoama['緯度'])) && !isNaN(parseFloat(agoama['經度']))){
-      if(agoama['資料編號'].match('agoama')){
-        var name = add_tag(agoama['長輩姓氏']+agoama['長輩性別'],"","h3");
-        var new_tag = add_tag("老人福利關懷協會個案","","h4");
-        var address = add_tag(agoama['長輩地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoama['長輩地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
-        // var point = add_tag(agoama['附近地標'],'附近地標',"div");
-        // var start = add_tag(agoama['回收時間-開始'],'開始回收時間',"div");
-        // var end = add_tag(agoama['回收時間-結束'],'結束回收時間',"div");
-        // var other = add_tag(break_line(agoama['意見回饋']),'',"div","other");
-        // var link_node ="";
-        // var link_node = add_tag('<a target="_self" href="./node.html?agoama='+index+'">補充資訊</a>','',"div");
-        // var text = name +address + point + start + econd + other+link_node;
-        var text = name + new_tag + address;
-    
-        index = agoama['資料編號'];
-  
-        arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']],{icon:redIcon}).addTo(map).bindPopup(text);
-        arr_markers[index].id = index;
-        
-      }
-      
-      else if(agoama['資料編號'].match('station')){
-        var name = add_tag(agoama['地址'],"","h3");
-        var new_tag = add_tag("老人福利關懷協會合作回收點","","h4");
-        var address = add_tag(agoama['地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoama['地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
-        // var point = add_tag(agoama['附近地標'],'附近地標',"div");
-        // var start = add_tag(agoama['回收時間-開始'],'開始回收時間',"div");
-        // var end = add_tag(agoama['回收時間-結束'],'結束回收時間',"div");
-        // var other = add_tag(break_line(agoama['意見回饋']),'',"div","other");
-        // var link_node ="";
-        // var link_node = add_tag('<a target="_self" href="./node.html?agoama='+index+'">補充資訊</a>','',"div");
-        // var text = name +address + point + start + end + other+link_node;
-        var text = name + new_tag + address;
-    
-        index = agoama['資料編號'];
-  
+    if(!isNaN(parseFloat(agoama['緯度'])) && !isNaN(parseFloat(agoama['經度'])) && agoama['擷取狀態']=='已擷取'){
+        var name = add_tag(agoama['稱呼'],"","h3");
+        var address = add_tag(agoama['回收點地址']+'  <a href="https://www.google.com.tw/maps/place/'+agoama['回收點地址']+'" target="_blank" >到 Google 地圖</a>','地址',"div");
+        var address_character = add_tag(agoama['回收點特徵'],'回收點特徵',"div");
+        var time = add_tag(agoama['收回收時間'],'收回收時間',"div");
+        var character = add_tag(agoama['長輩特徵'],'長輩特徵',"div");
+        var date = /(^\d{4}\/\d{1,2}\/\d{1,2})/.exec(agoama['時間戳記'])[0];
+        var submit_date = add_tag(date, '登記日期', "div");
+        var text = name + address + character + address_character + time + submit_date;
+        var index = '2018_'+index;
         arr_markers[index] = L.marker([agoama['緯度'], agoama['經度']]).addTo(map).bindPopup(text);
         arr_markers[index].id = index;
-        
-      }
   
     }
   }
@@ -491,7 +445,6 @@ $(function(){
 
 
 <div class="hide">
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeIViJYO6ComCrMglxwLMK8p4qCF5JJrU-vl8-Np5aiN5K4nw/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" id="gform-agoama">載入中…</iframe>
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeufB5ELJDx0go6_UBsfn8E--C5qyRfHRyLjoaTZfddggdXwQ/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" id="gform-place">載入中…</iframe>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfONeN-J7hZGQedsbQPkiov7XoI3dVEkC_2STlDuj_3YLc7mw/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" id="gform-agoama">載入中…</iframe>
 </div>
         </body></html>
